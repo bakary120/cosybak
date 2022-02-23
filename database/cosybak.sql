@@ -33,13 +33,15 @@ ENGINE = InnoDB;
 -- Table `cosybak`.`user`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cosybak`.`user` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `login` VARCHAR(255) NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,  
+  `lastname` VARCHAR(255) NULL,
+  `firstname` VARCHAR(255) NULL,
+  `email` VARCHAR(255) NULL,
   `password` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL,
   `config_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_user_config1_idx` (`config_id` ASC))
-ENGINE = MyISAM;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -78,17 +80,15 @@ CREATE TABLE IF NOT EXISTS `cosybak`.`product` (
   `description` TEXT CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL DEFAULT 'la description du produit',
   `picture` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL DEFAULT 'l\'URL de l\'image produit',
   `price` DECIMAL NOT NULL DEFAULT 0 COMMENT 'Le prix du produit',
---   `rate` TINYINT NULL DEFAULT 'L\'avis sur le produit, de 1 à 5',
+   `status` TINYINT(1) NOT NULL DEFAULT 0 COMMENT 'Le statut du produit (1=dispo, 2=pas dispo)',
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'La date de création du produit',
-  `updated_at` TIMESTAMP NULL COMMENT 'La date de la dernière mise à jour du produit',
-  `updated_at` TIMESTAMP NULL DEFAULT 'date de la dernière mise à jour',  
+  `updated_at` TIMESTAMP NULL COMMENT 'La date de la dernière mise à jour du produit',   
   `type_id` INT NOT NULL,
-  `user_id` INT NOT NULL,
-  `category_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `user_id`, `category_id`),
+  `category_id` INT NOT NULL,  
+  PRIMARY KEY (`id`, `type_id`, `category_id`),
   INDEX `fk_product_type1_idx` (`type_id` ASC),
-  INDEX `fk_product_user1_idx` (`user_id` ASC),
   INDEX `fk_product_category1_idx` (`category_id` ASC))
+  
 ENGINE = InnoDB;
 
 
@@ -114,9 +114,52 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Data for table `category`
 -- -----------------------------------------------------
 START TRANSACTION;
-INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `updated_at`) VALUES (1, 'Thés Bio', 'Découvrer notre gamme de thés verts-thés noirs ', 'images/categ1.jpeg','2022-02-22 8:00:00', NULL);
-INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `updated_at`) VALUES (2, 'Tisanes', 'Boisson saines et bienfaisantes', 'images/categ2.jpeg', '2022-02-22 8:00:00', NULL);
-INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `updated_at`) VALUES (3, 'Infusions', 'Des mélanges audacieux et délicieux', 'images/categ3.jpeg', '2022-02-22 8:00:00', NULL);
-INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `updated_at`) VALUES (4, 'Coffrets', 'Selection thés et infusion pour votre plaisir', 'images/categ4.jpeg', '2022-02-22 8:00:00', NULL);
+INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `updated_at`) VALUES (1, 'Thés Bio', 'Découvrer notre gamme de thés verts-thés noirs ', 'images/thesbio.jpg','2022-02-22 8:00:00', NULL);
+INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `updated_at`) VALUES (2, 'Tisanes', 'Boisson saines et bienfaisantes', 'images/tisanes.jpg', '2022-02-22 8:00:00', NULL);
+INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `updated_at`) VALUES (3, 'Infusions', 'Des mélanges audacieux et délicieux', 'images/infusion.jpg', '2022-02-22 8:00:00', NULL);
+INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `updated_at`) VALUES (4, 'Coffrets', 'Selection thés et infusion pour votre plaisir', 'images/coffret.png', '2022-02-22 8:00:00', NULL);
+INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `updated_at`) VALUES (5, 'Bien-être et détox', 'Purifier et revitaliser naturellement', 'images/detox.jpg', '2022-02-22 8:00:00', NULL);
+INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `updated_at`) VALUES (6, 'Tisane-Enfant', 'Souhaitez-vous une tisane pour votre tout petit?', 'images/tisane-enfant.jpg', '2022-02-22 8:00:00', NULL);
 
 COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `type`
+-- -----------------------------------------------------
+START TRANSACTION;
+INSERT INTO `type` (`id`, `name`, `footer_order`, `created_at`, `updated_at`) VALUES (1, 'Tisane', 1, '2022-02-22 8:00:00', NULL);
+INSERT INTO `type` (`id`, `name`, `footer_order`, `created_at`, `updated_at`) VALUES (2, 'Coffret', 2, '2022-02-22 8:00:00', NULL);
+INSERT INTO `type` (`id`, `name`, `footer_order`, `created_at`, `updated_at`) VALUES (3, 'Bien-être et détox', 4, '2022-02-22 8:00:00', NULL);
+INSERT INTO `type` (`id`, `name`, `footer_order`, `created_at`, `updated_at`) VALUES (4, 'Tisane-Enfant', 0, '2022-02-22 8:00:00', NULL);
+
+
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `product`
+-- -----------------------------------------------------
+START TRANSACTION;
+INSERT INTO `product` (`id`, `name`, `description`, `picture`, `price`,  `status`, `created_at`, `updated_at`, `type_id`, `category_id`) VALUES (1, 'thé vert sencha bio', ' Grâce à son procédé de fabrication unique, ce thé Sencha biologique vous offre une pause hydratation résolument rafraîchissante et bienfaisante. Un bon moyen de s’initier en douceur à la célèbre infusion des feuilles du théier !.', 'images/produits/sencha.png', 13.99, 1, '2022-02-22 8:00:00', NULL, 1, 1);
+INSERT INTO `product` (`id`, `name`, `description`, `picture`, `price`,  `status`, `created_at`, `updated_at`, `type_id`, `category_id`) VALUES (2, 'thé vert jasmin bio', ' léger et savoureux,Avec son arôme à la fois subtil et floral, ce thé vert biologique traditionnel se glisse à merveille dans un mug matinal, ou dans celui de 16 heures pour vous accorder une pause thé résolument zen.', 'images/produits/sencha.png', 13.99, 1, '2022-02-22 8:00:00', NULL, 1, 1);
+INSERT INTO `product` (`id`, `name`, `description`, `picture`, `price`,  `status`, `created_at`, `updated_at`, `type_id`,`category_id`) VALUES (3, 'tisane ventre', ' renferme toutes les plantes incontournables de la sphère digestive. La mélisse soulage les spasmes de l’estomac et du côlon d’origine nerveuse, et stimule en douceur le transit intestinal. Le romarin, en favorisant la sécrétion de bile, facilite les processus digestifs et l’élimination des toxines.', 'images/produits/sencha.png', 12, 1, '2022-02-22 8:00:00', NULL, 1, 2);
+INSERT INTO `product` (`id`, `name`, `description`, `picture`, `price`,  `status`, `created_at`, `updated_at`, `type_id`, `category_id`) VALUES (4, 'tisane troubles feminins', ' Ce mélange présente un concentré de plantes reconnues pour leur vertus calmantes. La mélisse antispasmodique réduit les crampes utérines tout en régulant l’humeur et l’irritabilité. La sauge et l’achillée millefeuille contribuent également à atténuer les douleurs provoquées par les contractions de l’utérus. Quant au millepertuis, l’anti-déprime par excellence, il est tout indiqué dans la prévention du syndrome prémenstruel.', 'images/produits/sencha.png', 11, 1, '2022-02-22 8:00:00', NULL, 1, 2);
+INSERT INTO `product` (`id`, `name`, `description`, `picture`, `price`,  `status`, `created_at`, `updated_at`, `type_id`,  `category_id`) VALUES (5, 'Coffret minceur', ' Pour une ligne au top, vous pouvez faire confiance au Thé amincissant bio. Alliant thés verts, thé blanc, maté vert et pissenlit, il accélère le métabolisme au repos tout en exerçant une action drainante.', 'images/produits/sencha.png', 13.99, 1, '2022-02-22 8:00:00', NULL, 2, 4);
+INSERT INTO `product` (`id`, `name`, `description`, `picture`, `price`,  `status`, `created_at`, `updated_at`, `type_id`, `category_id`) VALUES (6, 'Coffret 100% détox', ' Combinant thé vert Sencha, matcha et maté vert, la Cure détox minceur 28 jours vous accompagne dans votre rééquilibrage alimentaire ou votre perte de poids en accélerant votre métabolisme. Exit les kilos superflus qui se logent sur les hanches !', 'images/produits/sencha.png', 10, 1, '2022-02-22 8:00:00', NULL, 2, 4);
+INSERT INTO `product` (`id`, `name`, `description`, `picture`, `price`,  `status`, `created_at`, `updated_at`, `type_id`,  `category_id`) VALUES (7, 'Infusion fruits rouges - citron bio', 'Une farandole de baies rouges, roses et violettes pour célébrer le retour du soleil et des beaux jours : de la mûre et de la myrtille qui sonnent comme un retour de promenade en forêt, et de la framboise pour son parfum délicatement acidulé. Fraîches et pétillantes, les écorces de citron adjoignent l’ultime touche ensoleillée manquante.Joyeuse et vive, cette infusion biologique sans théine s’adresse aussi bien aux plus petits qu’aux plus grands gourmands.', 'images/produits/sencha.png', 14, 1, '2022-02-22 8:00:00', NULL, 1, 3);
+INSERT INTO `product` (`id`, `name`, `description`, `picture`, `price`,  `status`, `created_at`, `updated_at`, `type_id`, `category_id`) VALUES (8, 'cure détox foie 28 jours', ' la cure détox pour le foie bio de 28 jours. Autour d’un trio de thés verts, blanc et noir et de feuilles de maté, on retrouve la dent-de-lion (ou pissenlit) qui participe au fonctionnement normal du foie et de l’estomac.', 'images/produits/sencha.png', 13.99, 1, '2022-02-22 8:00:00', NULL, 3, 5);
+INSERT INTO `product` (`id`, `name`, `description`, `picture`, `price`,  `status`, `created_at`, `updated_at`, `type_id`,  `category_id`) VALUES (9, 'Tisane enfants - infusion bonbon', ' Mêlant morceaux de fraise et écorces d’orange biologiques, ce mélange naturellement sucré plongera votre enfant dans la magie d’une fête foraine, au pays des sucettes colorées et des foisonnantes barbes à papa. Un moyen ingénieux pour lui offrir une hydratation optimale tout au long de la journée, sans recourir systématiquement aux sodas et jus de fruits !', 'images/produits/sencha.png', 10, 1, '2022-02-22 8:00:00', NULL, 4, 6);
+
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `user`
+-- -----------------------------------------------------
+-- START TRANSACTION;
+-- INSERT INTO `user` (`id`, `lastname`, `firstname`, `email`,  `password`) VALUES (1, `traore`, `bakary`, `traorebakary120@gmail.com`, 12345);
+-- INSERT INTO `user` (`id`, `lastname`, `firstname`, `email`,  `password`) VALUES (1, `adm`, `bakary`, `traorebakary120@icloud.com`, 12345);
+
+
+-- COMMIT;
