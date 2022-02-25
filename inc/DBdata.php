@@ -18,5 +18,24 @@ class DBData
         $this->pdo = new PDO($dsn, $username, $password, $options);
     }
 
+    public function getcategory()
+    {
+            $sql = '
+            SELECT * 
+            FROM category';
+
+            $query = $this->pdo->query($sql);
+
+            $categoryList = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($categoryList as $category) {
+               
+                $categoryObject[] = new category($category['id'], $category['name'], $category['subtitle'], $category['picture']);
+            }
+    
+           
+            return $categoryObject;
+    }
+
  
 }

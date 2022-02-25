@@ -6,9 +6,24 @@ class HomeController extends MainController
     {
         $DBCon = new DBData();
 
+        
+
         return $this->show('home');
 
     }
+
+    public function category()
+    {
+        $DBCon = new DBData();
+
+        $categoryList = $DBCon->getCategory();
+
+        return $this->show('home', [
+            'categoryList' => $categoryList
+        ]);
+
+    }
+
 
   
 }

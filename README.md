@@ -5,12 +5,11 @@
 #### Etape 1 - Layout
 
 - analyser les zones qui se répètent d'une page à l'autre
-- commencer l'intégration HTML/CSS/layout/view/inc
+- commencer l'intégration HTML/CSS/public/view/inc
 
 #### Etape 2 - Templates / Views
 
-- une fois le "layout" mis en place, on va le mettre en place dans notre projet _cosybak_
-- ensuite placer dans le répertoire `public/assets/` les fichiers CSS, images et JavaScript
+- ensuite placer dans le répertoire `public/` les fichiers CSS, images et fonts
 
 #### Etape 3 - Home
 
