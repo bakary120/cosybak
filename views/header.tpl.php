@@ -1,23 +1,19 @@
-<?php
-require(__DIR__.'/../pathUrl.php');
-// Session start permet de démarrer notre $_SESSION
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="./html/public/assets/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,800" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-        crossorigin="anonymous">
-  
-  <link rel="stylesheet" href="./html/public/assets/css/owl.carousel.min.css">
-  <link rel="stylesheet" href="./html/public/assets/css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="./html/public/assets/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+    <link rel=" stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="./public/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./public/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./public/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="./public/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="./public/css/styles.css">
+ 
   <title>cosybak</title>
 </head>
 
@@ -37,7 +33,7 @@ session_start();
                 <div id="navbarCollapse" class="collapse navbar-collapse">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item">
-                            <a href="<?= pathUrl().'index.php' ?>" class="nav-link">Home</a>
+                            <a href="home" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">THES BIO</a>
@@ -80,5 +76,7 @@ session_start();
                     </div>
                 </div>
         </nav>
+        <br>
+        <br>
+        <br>
     </header>
-    

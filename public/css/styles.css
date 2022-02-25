@@ -68,3 +68,23 @@
   color: #343a40;
   font-weight: bold;
 }
+
+/* footer parti haut */
+#footer-services {
+  background-color: bisque;
+}
+
+/* footer bas */
+#footer-menu {
+  background-color: #007721;
+  color: white;
+}
+
+#footer-copyright {
+  background-color: black;
+  color: white;
+}
+
+#footerContainer {
+  margin-top: 10rem;
+}
