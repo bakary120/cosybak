@@ -6,12 +6,14 @@ index.php est le FrontController
 
 */
 
-// require __DIR__ . '/model/Category.php';
+require __DIR__ . '/model/Category.php';
+require __DIR__ . '/model/Type.php';
 
 require __DIR__ . '/inc/DBData.php';
 
 require __DIR__ . '/Controllers/MainController.php';
 require __DIR__ . '/Controllers/HomeController.php';
+// require __DIR__ . '/Controllers/TypeController.php';
 
 $homeController = new HomeController();
 

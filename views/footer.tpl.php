@@ -12,7 +12,9 @@
         <div class="col-lg-2 mb-5 mb-lg-0">
            <!-- <div class="font-weight-bold text-uppercase text-lg text-white mb-3" style="text-align: center;">cosybak</div>  -->
            <img src="images/logoB.png"
-          alt="logoFooter" class="logoFooter-img " style="width: 100%;">         
+          alt="logoFooter" class="logoFooter-img " style="width: 100%;
+  height: 200px;
+  margin-top: -47px;">         
         </div>
 
     <div class="container">
@@ -25,10 +27,15 @@
          
         <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
           <h6 class="text-uppercase text-white mb-3">Produits</h6>
+          
           <ul class="list-unstyled">
-            <!-- parcourir les produits -->
-            <li> <a href="#" class="text-muted"></a></li>              
-          </ul>            
+            
+          <?php foreach($viewVars['types'] as $type) : ?>
+          <li> <a href="#" class="text-white opacity-75"><?= $type->getName() ?></a></li>
+          <?php endforeach ?>   
+                        
+          </ul>
+                   
         </div>
 
         <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
@@ -59,9 +66,9 @@
             <h6 class="text-uppercase text-white mb-3">Recevez nos offres promotionnelles</h6> 
             <form action="#" id="newsletter-form">
               <div class="input-group mb-3">
-                <input type="email" placeholder="Votre adresse email" class="form-control bg-transparent border-white border-right-0">
+                <input type="email" placeholder="Votre adresse email" class="form-control  border-white border-right-0">
                 <div class="input-group-append">
-                  <button type="submit" class="btn btn-outline-secondary border-white border-left-0"><i class="fa fa-paper-plane text-white"></i></button>
+                  <button type="submit" class="btn btn-outline-primary border-white border-left-0"><i class="fa fa-paper-plane text-white"></i></button>
                 </div>
               </div>
             </form>          

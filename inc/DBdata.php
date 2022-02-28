@@ -30,12 +30,37 @@ class DBData
 
             foreach ($categoryList as $category) {
                
-                $categoryObject[] = new category($category['id'], $category['name'], $category['subtitle'], $category['picture']);
+                $categoryObject[] = new category($category['id'], $category['name'], $category['subtitle'], $category['picture'], $category['numero']);
             }
     
            
             return $categoryObject;
     }
+
+    public function getType()
+    {
+        $sql = '
+        SELECT *
+        FROM `type`
+        WHERE `footer_order` != 0
+        ORDER BY `footer_order` ASC
+        LIMIT 5
+            
+            ';
+    
+    $query = $this->pdo->query($sql);
+
+    $typeList = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($typeList as $type) {
+       
+        $typeObject[] = new type($type['id'],$type['name'],$type['footer_order']);
+    }
+
+   
+    return $typeObject;
+    }
+  
 
  
 }

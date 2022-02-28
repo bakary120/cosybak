@@ -67,6 +67,7 @@ CREATE TABLE IF NOT EXISTS `cosybak`.`category` (
   `picture` VARCHAR(255) NULL DEFAULT 'L\'URL de l\'image de la catégorie (utilisée en home)',
   `created_at` TIMESTAMP NULL,
   `updated_at` TIMESTAMP NULL,
+  `numero` VARCHAR(255),
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -114,12 +115,13 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Data for table `category`
 -- -----------------------------------------------------
 START TRANSACTION;
-INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `updated_at`) VALUES (1, 'Thés Bio', 'Découvrer notre gamme de thés verts-thés noirs ', 'images/thesbio.jpg','2022-02-22 8:00:00', NULL);
-INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `updated_at`) VALUES (2, 'Tisanes', 'Boisson saines et bienfaisantes', 'images/tisanes.jpg', '2022-02-22 8:00:00', NULL);
-INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `updated_at`) VALUES (3, 'Infusions', 'Des mélanges audacieux et délicieux', 'images/infusion.jpg', '2022-02-22 8:00:00', NULL);
-INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `updated_at`) VALUES (4, 'Coffrets', 'Selection thés et infusion pour votre plaisir', 'images/coffret.png', '2022-02-22 8:00:00', NULL);
-INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `updated_at`) VALUES (5, 'Bien-être et détox', 'Purifier et revitaliser naturellement', 'images/detox.jpg', '2022-02-22 8:00:00', NULL);
-INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `updated_at`) VALUES (6, 'Tisane-Enfant', 'Souhaitez-vous une tisane pour votre tout petit?', 'images/tisane-enfant.jpg', '2022-02-22 8:00:00', NULL);
+INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `updated_at`,`numero`) VALUES (1, 'Thés Bio', 'Découvrer notre gamme de thés verts-thés noirs ', 'images/thesbio.jpg','2022-02-22 8:00:00', NULL,1);
+INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `updated_at`,`numero`) VALUES (2, 'Tisanes', 'Boisson saines et bienfaisantes', 'images/tisanes.jpg', '2022-02-22 8:00:00', NULL,2);
+INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `updated_at`,`numero`) VALUES (3, 'Infusions', 'Des mélanges audacieux et délicieux', 'images/infusion.jpg', '2022-02-22 8:00:00', NULL,3);
+INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `updated_at`,`numero`) VALUES (4, 'Coffrets', 'Selection thés et infusion pour votre plaisir', 'images/coffret.png', '2022-02-22 8:00:00', NULL,4);
+INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `updated_at`,`numero`) VALUES (5, 'Bien-être et détox', 'Purifier et revitaliser naturellement', 'images/detox.jpg', '2022-02-22 8:00:00', NULL,5);
+INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `updated_at`,`numero`) VALUES (6, 'Tisane-Enfant', 'Souhaitez-vous une tisane pour votre tout petit?', 'images/tisane-enfant.jpg', '2022-02-22 8:00:00', NULL,6);
+INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `updated_at`,`numero`) VALUES (7, 'accessoires-thé', 'Théières, infuseur, tisanières, bouilloire. Retrouvez une gamme complète autour du thé', 'images/tisane-enfant.jpg', '2022-02-22 8:00:00', NULL,7);
 
 COMMIT;
 

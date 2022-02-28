@@ -5,13 +5,15 @@ class category
     private $name;
     private $subtitle;
     private $picture;
+    private $numero;
 
-    public function __construct($id, $name, $subtitle, $picture )
+    public function __construct($id, $name, $subtitle, $picture, $numero )
     {
        $this->id = $id;
        $this->name = $name; 
        $this->subtitle = $subtitle; 
        $this->picture = $picture; 
+       $this->numero = $numero; 
      }
    
 
@@ -83,6 +85,24 @@ class category
     public function setPicture($picture): self
     {
         $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of numero
+     */
+    public function getNumero()
+    {
+        return $this->numero;
+    }
+
+    /**
+     * Set the value of numero
+     */
+    public function setNumero($numero): self
+    {
+        $this->numero = $numero;
 
         return $this;
     }
