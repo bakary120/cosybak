@@ -8,12 +8,13 @@ index.php est le FrontController
 
 require __DIR__ . '/model/Category.php';
 require __DIR__ . '/model/Type.php';
+require __DIR__ . '/model/Product.php';
 
 require __DIR__ . '/inc/DBData.php';
 
 require __DIR__ . '/Controllers/MainController.php';
 require __DIR__ . '/Controllers/HomeController.php';
-// require __DIR__ . '/Controllers/TypeController.php';
+
 
 $homeController = new HomeController();
 
@@ -34,6 +35,8 @@ if ($url === '/') { // Accueil
   $homeController->index();
 }else if($url === '/home') {
     $homeController-> index();
+}else if($url === '/category') {
+    $homeController-> product();
 }else {
     /*
     Si aucune ne route ne correspond à l'URL définie dans la requête HTTP, nous envoyons une erreur 404 (Not Found)

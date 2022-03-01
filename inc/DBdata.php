@@ -26,15 +26,15 @@ class DBData
 
             $query = $this->pdo->query($sql);
 
-            $categoryList = $query->fetchAll(PDO::FETCH_ASSOC);
+            $productList = $query->fetchAll(PDO::FETCH_ASSOC);
 
-            foreach ($categoryList as $category) {
+            foreach ($productList as $category) {
                
-                $categoryObject[] = new category($category['id'], $category['name'], $category['subtitle'], $category['picture'], $category['numero']);
+                $productobjet[] = new category($category['id'], $category['name'], $category['subtitle'], $category['picture'], $category['numero']);
             }
     
            
-            return $categoryObject;
+            return $productobjet;
     }
 
     public function getType()
@@ -60,7 +60,28 @@ class DBData
    
     return $typeObject;
     }
+
+
+    public function getCategorys($id)
+    {
+        $sql = "
+        SELECT *
+        FROM product
+        WHERE category_id = $id 
+       ";
+    
+    $query = $this->pdo->query($sql);
+
+    $productList = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($productList as $product) {
+       
+        $productobjet[] = new product($product['id'],$product['name'],$product['description'],$product['picture'],$product['price']);
   
+        }
+   
+    return $productobjet;
+    }
 
  
 }

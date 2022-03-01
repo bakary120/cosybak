@@ -8,6 +8,7 @@ class HomeController extends MainController
 
         $categoryList = $DBCon->getCategory();
         $typeList = $DBCon->getType();
+        
 
         return $this->show('home', [
             'categories' => $categoryList,
@@ -16,6 +17,17 @@ class HomeController extends MainController
 
     }
 
+    public function product()
+    {
+        $DBCon = new DBData();
+
+        $product = $DBCon->getCategorys($_GET['category_id']);        
+
+        return $this->show('category', [  
+            'products' => $product
+        ]);
+
+    }
     
 
     
