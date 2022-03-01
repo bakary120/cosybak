@@ -21,13 +21,18 @@ class HomeController extends MainController
     {
         $DBCon = new DBData();
 
-        $product = $DBCon->getCategorys($_GET['category_id']);        
+        $product = $DBCon->getCategorys($_GET['category_id']); 
+        $typeList = $DBCon->getType();       
 
         return $this->show('category', [  
-            'products' => $product
+            'products' => $product,
+            'types' => $typeList
         ]);
 
     }
+
+  
+  
     
 
     

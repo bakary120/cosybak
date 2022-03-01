@@ -67,7 +67,8 @@ class DBData
         $sql = "
         SELECT *
         FROM product
-        WHERE category_id = $id 
+        WHERE category_id = $id    
+        
        ";
     
     $query = $this->pdo->query($sql);
@@ -82,6 +83,8 @@ class DBData
    
     return $productobjet;
     }
+
+  
 
  
 }

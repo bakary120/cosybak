@@ -41,7 +41,8 @@
         <div class="product col-xl-3 col-lg-4 col-sm-6">
           <div class="product-image">
             <a href="#" class="product-hover-overlay-link">
-              <img src="./images/1.png" alt="product" class="img-fluid">
+           
+              <img src="images/<?= $product->getPicture() ?>.png" alt="product" class="img-fluid">
             </a>
           </div>
           <div class="product-action-buttons text-center m-3">
@@ -50,8 +51,10 @@
           </div>
           <div class="py-2">
             <p class="text-muted text-sm mb-1"><?= $product-> getName() ?></p>
-            <h3 class="h6 text-uppercase mb-1"><a href="#" class="text-dark"><?= $product-> getDescription() ?>d</a></h3><span class="text-muted">p<?= $product-> getPrice() ?></span>
+            <h3 class="h6 text-uppercase mb-1"><a href="#" class="text-dark"><?= $product-> getDescription() ?>d</a></h3>
+            <span class="text-muted">p<?= $product-> getPrice() ?></span>
           </div>
+          
         </div>
         <?php endforeach; ?>
         <!-- /product-->
