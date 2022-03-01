@@ -10,7 +10,7 @@ class Type
     {
        $this->id = $id;
        $this->name = $name; 
-       $this->color = $footer_order; 
+       $this->footer_order = $footer_order; 
        
     }
 

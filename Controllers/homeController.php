@@ -21,16 +21,49 @@ class HomeController extends MainController
     {
         $DBCon = new DBData();
 
-        $product = $DBCon->getCategorys($_GET['category_id']); 
+        $categoryOneList = $DBCon->getCategoryOne($_GET['category_id']);        
+        $product = $DBCon->getCategorys($_GET['category_id']);        
         $typeList = $DBCon->getType();       
 
         return $this->show('category', [  
-            'products' => $product,
+            'categoryOne' => $categoryOneList,
+            'products' => $product,            
             'types' => $typeList
         ]);
 
     }
 
+    public function productDetails()
+    {
+        $DBCon = new DBData();
+
+        $typeList = $DBCon->getType();
+        $product = $DBCon->getDetailsproduct($_GET['detail_id']);
+            
+
+        return $this->show('detail', [  
+            'types' => $typeList,
+            'productDetails' => $product
+            
+        ]);
+
+    }
+
+    public function Addpanier()
+    {
+        $DBCon = new DBData();
+
+       
+        $productAddpanier = $DBCon->getAddpanier($_GET['panier_id']); 
+     ;       
+
+        return $this->show('panier', [  
+            
+            'panier' => $productAddpanier
+            
+        ]);
+
+    }
   
   
     

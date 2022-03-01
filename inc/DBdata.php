@@ -84,7 +84,71 @@ class DBData
     return $productobjet;
     }
 
+    public function getCategoryOne($id)
+    {
+        $sql = "
+        SELECT *
+        FROM category
+        WHERE id = $id    
+        
+       ";
+    
+       $query = $this->pdo->query($sql);
+
+       $categoryOne = $query->fetchAll(PDO::FETCH_ASSOC);
+
+       foreach ($categoryOne as $categoryOne) {
+          
+           $categoryOneobjet[] = new category($categoryOne['id'], $categoryOne['name'], $categoryOne['subtitle'], $categoryOne['picture'], $categoryOne['numero']);
+       }
+
+      
+       return $categoryOneobjet;
+    }
+
+    public function getDetailsproduct($id)
+    {
+        $sql = "
+            SELECT *
+            FROM product            
+            WHERE id = $id           
+            
+        ";
+    
+    $query = $this->pdo->query($sql);
+
+    $productDetails = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($productDetails as $product) {
+       
+        $productDetailsobjet[] = new product($product['id'],$product['name'],$product['description'],$product['picture'],$product['price']);
   
+        }
+   
+    return $productDetailsobjet;
+    }
+    
+    public function getAddpanier($id)
+    {
+        $sql = "
+            SELECT *
+            FROM product            
+            WHERE id = $id           
+            
+        ";
+    
+    $query = $this->pdo->query($sql);
+
+    $productDetails = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($productDetails as $product) {
+       
+        $productDetailsobjet[] = new product($product['id'],$product['name'],$product['description'],$product['picture'],$product['price']);
+  
+        }
+   
+    return $productDetailsobjet;
+    }
 
  
 }

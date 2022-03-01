@@ -11,9 +11,9 @@ class product
     {
        $this->id = $id;
        $this->name = $name; 
-       $this->subtitle = $description; 
+       $this->description = $description; 
        $this->picture = $picture; 
-       $this->numero = $price; 
+       $this->price = $price; 
      }
 
 
