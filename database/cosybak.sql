@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `cosybak`.`product` (
   `name` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL DEFAULT 'nom du produit',
   `description` TEXT CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL DEFAULT 'la description du produit',
   `picture` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL DEFAULT 'l\'URL de l\'image produit',
-  `price` DECIMAL NOT NULL DEFAULT 0 COMMENT 'Le prix du produit',
+  `price` FLOAT NOT NULL DEFAULT 0 COMMENT 'Le prix du produit',
    `status` TINYINT(1) NOT NULL DEFAULT 0 COMMENT 'Le statut du produit (1=dispo, 2=pas dispo)',
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'La date de création du produit',
   `updated_at` TIMESTAMP NULL COMMENT 'La date de la dernière mise à jour du produit',   

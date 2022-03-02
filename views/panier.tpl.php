@@ -1,13 +1,14 @@
+<!-- <:?= var_dump($_SESSION['panier']); ?> -->
 <section class="hero">
       <div class="container">
         <!-- Breadcrumbs -->
         <ol class="breadcrumb justify-content-center">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Panier</li>
+          <!-- <li class="breadcrumb-item"><a href="index.html">Home</a></li> -->
+          <li class="breadcrumb-item active h3">Panier</li>
         </ol>
         <!-- Hero Content-->
         <div class="hero-content pb-5 text-center">
-          <h1 class="hero-heading">Panier</h1>
+          
           <div class="row">   
             <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">Vous avez <?= count($viewVars['panier']) ?>  produits dans votre panier</p></div>
           </div>
@@ -37,8 +38,9 @@
                     <div class="row d-flex align-items-center text-center">
                       <div class="col-5">
                       
-                        <div class="d-flex align-items-center"><a href="detail.html"><img src="" alt="..." class="cart-item-img"></a>
-                          <div class="cart-title text-left"><?= $productAddpanier->getName() ?><a href="detail.html" class="text-uppercase text-dark"><strong></strong></a><br>
+                        <div class="d-flex align-items-center"><a href="detail.html">
+                          <img src="<?= $productAddpanier->getPicture() ?>" alt="..." class="cart-item-img" style="height: 60px;"></a>
+                          <div class="cart-title text-left ml-4"><?= $productAddpanier->getName() ?><a href="detail.html" class="text-uppercase text-dark"><strong></strong></a><br>
                           </div>
                         </div>
                       </div>
@@ -46,8 +48,9 @@
                       <div class="col-2">
                         <div class="d-flex align-items-center">
                           <div class="btn btn-items btn-items-decrease">-</div>
-                          <?= $_SESSION['panier'][$panier->id]  ?>
-                          <input value="4" class="form-control text-center input-items" type="text">
+                         
+                          <!-- <input value=" " class="form-control text-center input-items" type="text"> -->
+                          <?= count($viewVars['panier']) ?>
                           <div class="btn btn-items btn-items-increase">+</div>
                         </div>
                       </div>
@@ -59,9 +62,14 @@
                   </div>
               </div>
             </div>
-            <div class="my-5 d-flex justify-content-between flex-column flex-lg-row"><a href="category.html" class="btn btn-link text-muted"><i class="fa fa-chevron-left"></i> Continuer les achats</a><a href="checkout1.html" class="btn btn-dark">Commander <i class="fa fa-chevron-right"></i>                                                     </a></div>
+            <div class="my-5 d-flex justify-content-between flex-column flex-lg-row ">
+              <!-- ajouter produit au panier -->
+              <a href="./" class="btn btn-link text-muted">
+              <i class="fa fa-chevron-left"></i> Continuer les achats</a>
+              <a href="checkout1.html" class="btn btn-dark">Commander <i class="fa fa-chevron-right"></i></a>
+            </div>
           </div>
-          <div class="col-lg-4">
+          <!-- <div class="col-lg-4">
             <div class="block mb-5">
               <div class="block-header">
                 <h6 class="text-uppercase mb-0">Récapitulatif</h6>
@@ -76,7 +84,7 @@
                 </ul>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>

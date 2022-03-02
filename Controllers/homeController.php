@@ -55,11 +55,13 @@ class HomeController extends MainController
 
        
         $productAddpanier = $DBCon->getAddpanier($_GET['panier_id']); 
+        // $productAdd = $DBCon->getAdd($_GET['panier_id']); 
      ;       
 
         return $this->show('panier', [  
             
-            'panier' => $productAddpanier
+            'panier' => $productAddpanier,
+            // 'sessionpanier' => $productAdd
             
         ]);
 

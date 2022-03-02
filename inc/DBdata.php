@@ -16,7 +16,15 @@ class DBData
             PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING
         ];
         $this->pdo = new PDO($dsn, $username, $password, $options);
+
+        if(!isset($_SESSION)) {
+            session_start();
+         }
+         if(!isset($_SESSION['panier'])) {
+          $_SESSION['panier'] = []; 
+          }
     }
+
 
     public function getcategory()
     {
@@ -150,5 +158,8 @@ class DBData
     return $productDetailsobjet;
     }
 
+    
+
+  
  
 }

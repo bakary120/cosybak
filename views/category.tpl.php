@@ -1,6 +1,6 @@
+<!-- <:?= var_dump($_SESSION['panier']); ?> -->
 <section class="hero">
     <div class="container">
-      
     
    
       <ol class="breadcrumb justify-content-center">
@@ -50,9 +50,11 @@
             </a>
           </div>
           <div class="product-action-buttons text-center m-3">
-            <span class="font-weight-bold h4"><?= $product->getPrice() ?> €</span>
-            <a href="./panier?panier_id=<?= $product->getId() ?>" class="btn btn-outline-dark btn-product-left"><i class="fa fa-shopping-cart"></i></a>
-            <a href="./detail?detail_id=<?= $product->getId() ?>" class="btn btn-primary btn-buy"><i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
+            <span class="font-weight-bold h4"><?= number_format($product->getPrice(),2, ',', ' ') ?> €</span>
+            <a href="./panier?panier_id=<?= $product->getId() ?>" class="btn btn-outline-dark btn-product-left">
+            <i class="fa fa-shopping-cart"></i></a>
+            <a href="./detail?detail_id=<?= $product->getId() ?>" class="btn btn-primary btn-buy">
+            <i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
           </div>
          
           <div class="py-2 ">
@@ -64,6 +66,7 @@
         <?php endforeach; ?>
         <!-- /product-->
         
+
 <!--         
         <div class="product col-xl-3 col-lg-4 col-sm-6">
             <div class="product-image">

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 /*
 Le fichier .htaccess permet de rediriger toutes les requêtes HTTP vers le fichier index.php ce qui nous de permet de n'avoir qu'un seul point d'entrée
 index.php est le FrontController
