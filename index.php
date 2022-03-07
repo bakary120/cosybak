@@ -12,6 +12,7 @@ require __DIR__ . '/model/Product.php';
 require __DIR__ . '/model/panier.php';
 
 require __DIR__ . '/inc/DBData.php';
+require __DIR__ . '/inc/sessionForm.php';
 
 require __DIR__ . '/Controllers/MainController.php';
 require __DIR__ . '/Controllers/HomeController.php';

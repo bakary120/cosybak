@@ -38,7 +38,7 @@ class HomeController extends MainController
         $DBCon = new DBData();
 
         $typeList = $DBCon->getType();
-        $product = $DBCon->getDetailsproduct($_GET['detail_id']);
+        $product = $DBCon->getDetailsproduct($_GET['product_id']);
             
 
         return $this->show('detail', [  
@@ -54,18 +54,19 @@ class HomeController extends MainController
         $DBCon = new DBData();
 
        
-        $productAddpanier = $DBCon->getAddpanier($_GET['panier_id']); 
+        $panierAdd = $DBCon->getAddpanier($_POST); 
         // $productAdd = $DBCon->getAdd($_GET['panier_id']); 
-     ;       
+          
 
         return $this->show('panier', [  
             
-            'panier' => $productAddpanier,
+            'panier' => $panierAdd,
             // 'sessionpanier' => $productAdd
             
         ]);
 
     }
+
   
   
     

@@ -72,6 +72,13 @@ body {
   font-weight: bold;
 }
 
+/* body */
+
+#shadow {
+  box-shadow: 2px 5px 5px 3px rgb(49, 199, 101);
+  border-radius: 2px;
+}
+
 /* footer  */
 #footer-menu {
   background-color: #007721;

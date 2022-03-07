@@ -1,4 +1,6 @@
 <!-- <:?= var_dump($_SESSION['panier']); ?> -->
+
+
 <section class="hero">
       <div class="container">
         <!-- Breadcrumbs -->
@@ -10,7 +12,7 @@
         <div class="hero-content pb-5 text-center">
           
           <div class="row">   
-            <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">Vous avez <?= count($viewVars['panier']) ?>  produits dans votre panier</p></div>
+            <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">Vous avez <?= count($_SESSION['panier']) ?>  produits dans votre panier</p></div>
           </div>
         </div>
       </div>
@@ -32,33 +34,49 @@
                 </div>
 
                 <div class="cart-body">
+                <?php
+                    // Si le tableau $_GET à la clé keyCartDelete est différent de vide
+                    if (!empty($_GET['keyCartDelete'])) {
+                      // https://www.php.net/manual/fr/function.unset.php
+                      // A l'aide de la fonction unset, ce qui se trouve dans le tableau $_SESSION
+                      // à la clé cart
+                      // puis à la clé récupérer dans le paramètre GET
+                      // c'est à dire la clé du tableau associatif du produit
+                      unset($_SESSION['panier'][$_GET['keyCartDelete']]);
+                    }
+                  ?>
+                          <!-- <:?= var_dump($_SESSION['panier']) ?> -->
+
+
+
                   <!-- Product-->
-                  <?php foreach($viewVars['panier'] as $productAddpanier) : ?> 
+                  <!-- <:?php foreach($viewVars['panier'] as $panierAdd) : ?>  -->
+                    <?php foreach($_SESSION['panier'] as $key => $panierAdd) : ?>
                   <div class="cart-item">
                     <div class="row d-flex align-items-center text-center">
                       <div class="col-5">
                       
                         <div class="d-flex align-items-center"><a href="detail.html">
-                          <img src="<?= $productAddpanier->getPicture() ?>" alt="..." class="cart-item-img" style="height: 60px;"></a>
-                          <div class="cart-title text-left ml-4"><?= $productAddpanier->getName() ?><a href="detail.html" class="text-uppercase text-dark"><strong></strong></a><br>
+                          <img src="<?= $panierAdd["picture"] ?>" alt="..." class="cart-item-img" style="height: 60px;"></a>
+                          <div class="cart-title text-left ml-4"><a href="detail.html" class="text-uppercase text-dark"><strong><?= $panierAdd["name"] ?></strong></a><br>
                           </div>
                         </div>
                       </div>
-                      <div class="col-2"><?= $productAddpanier->getPrice() ?>€</div>
+                      <div class="col-2"><?= $panierAdd["price"] ?>€</div>
                       <div class="col-2">
                         <div class="d-flex align-items-center">
                           <div class="btn btn-items btn-items-decrease">-</div>
                          
-                          <!-- <input value=" " class="form-control text-center input-items" type="text"> -->
-                          <?= count($viewVars['panier']) ?>
+                           <input value=" " class="form-control text-center input-items" type="text"> 
+                          
                           <div class="btn btn-items btn-items-increase">+</div>
                         </div>
                       </div>
                       <div class="col-2 text-center">260€ total</div>
-                      <div class="col-1 text-center"><a href="#" class="cart-remove"> <i class="fa fa-times"></i></a></div>
+                      <div class="col-1 text-center"><a href="?keyCartDelete=<?= $key ?>" class="cart-remove"> <i class="fa fa-times"></i></a></div>
                     </div>
                   </div>
-                  <?php endforeach ?>                 <!-- Product-->
+                  <?php endforeach ?>                 
                   </div>
               </div>
             </div>

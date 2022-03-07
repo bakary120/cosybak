@@ -19,7 +19,7 @@ class panier
         
     }
     public function Dell($panier_id){
-        unset($_SESSION['panier'][$panier_id]);
+        unset($_SESSION['cart'][$_GET['keyCartDelete']]);
     }
 
     public function total(){

@@ -49,41 +49,41 @@
               <img src="<?= $product->getPicture() ?>" alt="product" class="img-fluid">
             </a>
           </div>
-          <div class="product-action-buttons text-center m-3">
-            <span class="font-weight-bold h4"><?= number_format($product->getPrice(),2, ',', ' ') ?> €</span>
-            <a href="./panier?panier_id=<?= $product->getId() ?>" class="btn btn-outline-dark btn-product-left">
-            <i class="fa fa-shopping-cart"></i></a>
-            <a href="./detail?detail_id=<?= $product->getId() ?>" class="btn btn-primary btn-buy">
-            <i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
-          </div>
+
+
+
+          <form class="product-action-buttons" action="" method="POST">
+            <!-- Input caché (type="hidden") qui contiennent les valeurs du produits (nom, l'image, le prix, quantité) -->
+            <input type="hidden" name="name" value="<?= $product->getName() ?>">
+            <input type="hidden" name="picture" value="<?= $product->getPicture() ?>">
+            <input type="hidden" name="price" value="<?= $product->getPrice() ?>">
+            <input type="hidden" name="quantity" value="1">
+            <input type="hidden" name="id" value="<?= $product->getId() ?>">
+            <!-- Fin des inputs
+            Bouton permettant de soumettre notre formulaire car il est de type submit
+            Le bouton comporte un nom, c'est 'addCartSession', ça nous permet de le différencier des autres formulaires -->
+            <!-- <div class="product-action-buttons text-center m-3"> -->
+            <span class="font-weight-bold h4"><?= number_format($product->getPrice(), 2, ',', ' ') ?> €</span>
+            <button name="addCartSession" type="submit"><i class="fa fa-shopping-cart"></i></button>
+            <!-- Fin de bouton -->
+            <a href="./detail?product_id=<?= $product->getId() ?>" class="btn btn-primary btn-buy"><i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
+           
+            <!-- </div> -->
+            
+          </form>
+
+        
          
           <div class="py-2 ">
           <h2 class="h6 text-uppercase mb-1 text-center"><a href="#" class="text-dark"><?= $product-> getName() ?></a></h2>
             <p class="text-muted text-sm mb-1 "><?= $product->getdescription() ?></p> 
           </div>
           
+
+          
         </div>
         <?php endforeach; ?>
-        <!-- /product-->
-        
-
-<!--         
-        <div class="product col-xl-3 col-lg-4 col-sm-6">
-            <div class="product-image">
-              <a href="detail.html" class="product-hover-overlay-link">
-                <img src="../images/produits/2-rose_tn.jpg" alt="product" class="img-fluid">
-              </a>
-            </div>
-            <div class="product-action-buttons">
-              <a href="#" class="btn btn-outline-dark btn-product-left"><i class="fa fa-shopping-cart"></i></a>
-              <a href="detail.html" class="btn btn-dark btn-buy"><i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
-            </div>
-            <div class="py-2">
-              <p class="text-muted text-sm mb-1">thé vert jasmin Desc</p>
-              <h3 class="h6 text-uppercase mb-1"><a href="detail.html" class="text-dark">thé vert jasmin</a></h3><span class="text-muted">13.99€</span>
-            </div>
-          </div>
-         -->
+      
         
          
 
