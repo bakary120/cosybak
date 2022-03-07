@@ -1,19 +1,25 @@
 <?php 
 
-
-
 // Notre formulaire, il a un bouton qui a pour name 'addCartSession'
 // On a fait une condition, si dans notre tableau $_POST (ce qu'on récupère de notre formulaire 'addCartSesssion')
 // on récupère bien la clé 'addCartSession',
-if (isset($_POST['addCartSession'])) {
-    // si notre tableau de $_SESSION est vide à l'index 'cart'
+if (isset($_POST["addCartSession"])) {
+    // si notre tableau de $_SESSION est vide
     if (empty($_SESSION['panier'])) {
         // on initialise le tableau à vide
         $_SESSION['panier'] = array();
     }
+
     // sinon on va remplir notre tableau de $_SESSION
     // avec le tableau récupérer du formulaire en POST à l'aide de la variable globale PHP $_POST
-    $_SESSION['panier'][] = $_POST;
+    // $_SESSION['panier'][] = $_POST;
+
+    if (!empty($_SESSION['panier'])) {
+        $_SESSION['panier'][intval($_POST['id'])]['quantity']++;
+    }
+    
+
+    
   
 
     // On redirige vers la page category.php (page permettant d'afficher tous les produits)
@@ -22,8 +28,9 @@ if (isset($_POST['addCartSession'])) {
 
 
 
+
 // Si le tableau $_GET contient la clé plus
-if (isset($_POST['plus'])) {
+if (isset($_POST["plus"])) {
     // Dans le tableau session à la clé cart
     // puis à la clé récupérer du formulaire avec
     // $_POST pour l'input ayant le name id
@@ -49,3 +56,6 @@ if (isset($_POST['moins'])) {
 
     header('Location: panier');
 }
+
+
+ 

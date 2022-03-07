@@ -54,19 +54,22 @@ class HomeController extends MainController
         $DBCon = new DBData();
 
        
+        $typeList = $DBCon->getType();
         $panierAdd = $DBCon->getAddpanier($_POST); 
-        // $productAdd = $DBCon->getAdd($_GET['panier_id']); 
+        
           
 
         return $this->show('panier', [  
             
-            'panier' => $panierAdd,
-            // 'sessionpanier' => $productAdd
+            'types' => $typeList,
+            'panier' => $panierAdd
+            
             
         ]);
 
     }
 
+   
   
   
     

@@ -1,4 +1,4 @@
-<?php
+<!-- <:?php
 class panier
 {
     public function __construct()
@@ -29,4 +29,4 @@ class panier
         }
     }
     
-}
+} -->

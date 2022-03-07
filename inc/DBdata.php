@@ -17,12 +17,7 @@ class DBData
         ];
         $this->pdo = new PDO($dsn, $username, $password, $options);
 
-        if(!isset($_SESSION)) {
-            session_start();
-         }
-         if(!isset($_SESSION['cart'])) {
-          $_SESSION['cart'] = []; 
-          }
+       
     }
 
 
@@ -136,45 +131,25 @@ class DBData
     return $productDetailsobjet;
     }
     
-    // public function getAddpanier($id)
-    // {
-    //     $sql = "
-    //         SELECT *
-    //         FROM product            
-    //         WHERE id = $id           
-            
-    //     ";
     
-    // $query = $this->pdo->query($sql);
 
-    // $productDetails = $query->fetchAll(PDO::FETCH_ASSOC);
-
-    // foreach ($productDetails as $product) {
-       
-    //     $productDetailsobjet[] = new product($product['id'],$product['name'],$product['description'],$product['picture'],$product['price']);
-  
-    //     }
-   
-    // return $productDetailsobjet;
-    // }
-
-    public function getAddpanier(){
+    public function getAddpanier()
+    {
         
-        // on récupère bien la clé 'addCartSession',
-    if (isset($_POST['addCartSession'])) {
-    // si notre tableau de $_SESSION est vide à l'index 'cart'
-    if (empty($_SESSION['panier'])) {
-        // on initialise le tableau à vide
-        $_SESSION['panier'] = array();
-    }
-    // sinon on va remplir notre tableau de $_SESSION
-    // avec le tableau récupérer du formulaire en POST à l'aide de la variable globale PHP $_POST
-    $_SESSION['panier'][] = $_POST;
-  
-
-    // On redirige vers la page category.php (page permettant d'afficher tous les produits)
-    // header('Location: ../view/category.php');
-}
+        //     // on récupère bien la clé 'addCartSession',
+        // if (isset($_POST['addCartSession'])) 
+        // {
+            
+        //     // si notre tableau de $_SESSION est vide à l'index 'cart'
+        //     if (empty($_SESSION['panier'])) {
+        //         // on initialise le tableau à vide
+        //         $_SESSION['panier'] = array();
+        //     }
+        //     // sinon on va remplir notre tableau de $_SESSION
+        //     // avec le tableau récupérer du formulaire en POST à l'aide de la variable globale PHP $_POST
+        //     $_SESSION['panier'][] = $_POST;
+        
+        // }
     }
     
 

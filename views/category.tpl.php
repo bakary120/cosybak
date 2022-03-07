@@ -52,27 +52,26 @@
 
 
 
-          <form class="product-action-buttons" action="" method="POST">
-            <!-- Input caché (type="hidden") qui contiennent les valeurs du produits (nom, l'image, le prix, quantité) -->
+          <form class="product-action-buttons" action="panier" method="POST">
+           
             <input type="hidden" name="name" value="<?= $product->getName() ?>">
             <input type="hidden" name="picture" value="<?= $product->getPicture() ?>">
             <input type="hidden" name="price" value="<?= $product->getPrice() ?>">
             <input type="hidden" name="quantity" value="1">
             <input type="hidden" name="id" value="<?= $product->getId() ?>">
-            <!-- Fin des inputs
-            Bouton permettant de soumettre notre formulaire car il est de type submit
-            Le bouton comporte un nom, c'est 'addCartSession', ça nous permet de le différencier des autres formulaires -->
-            <!-- <div class="product-action-buttons text-center m-3"> -->
+          
             <span class="font-weight-bold h4"><?= number_format($product->getPrice(), 2, ',', ' ') ?> €</span>
             <button name="addCartSession" type="submit"><i class="fa fa-shopping-cart"></i></button>
-            <!-- Fin de bouton -->
+            
             <a href="./detail?product_id=<?= $product->getId() ?>" class="btn btn-primary btn-buy"><i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
            
-            <!-- </div> -->
+           
             
           </form>
 
-        
+          
+       
+
          
           <div class="py-2 ">
           <h2 class="h6 text-uppercase mb-1 text-center"><a href="#" class="text-dark"><?= $product-> getName() ?></a></h2>

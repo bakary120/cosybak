@@ -64,12 +64,17 @@
                         <div class="nav-item dropdown">
                             <div class="d-none d-lg-block">
                                 <!-- lien panier -->
-                                <a id="cartdetails" href="" class="navbar-icon-link">
+                                
+                                <a id="cartdetails" href="panier" class="navbar-icon-link">
                                     <i class="fa fa-shopping-cart"></i>
-                                    <span class="badge badge-secondary">10</span>
-                                      <a id="dropdownCart" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle topbar-link"></a>
+                                   
+                                    <span class="badge badge-secondary">
+                                         <!-- <:?= array_sum($_SESSION["panier"])?>  -->
+                                        </span>
+                                    
+                                      <!-- <a id="dropdownCart" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle topbar-link"></a>
                                       <div aria-labelledby="dropdownCart" class="dropdown-menu dropdown-menu-right">
-                                    </div>
+                                    </div> -->
                                 </a>
                             </div>
                         </div>
