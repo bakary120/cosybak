@@ -42,6 +42,7 @@
       <div class="row">
         <!-- product-->
         <?php foreach($viewVars['products'] as $product) : ?>
+         
         <div class="product col-xl-3 col-lg-4 col-sm-6">
           <div class="product-image">
             <a href="#" class="product-hover-overlay-link">
@@ -50,9 +51,10 @@
             </a>
           </div>
 
+                      <!-- <:?= print_r($_SESSION['panier'] ["name"]) ?>  -->
 
 
-          <form class="product-action-buttons" action="" method="POST">
+                      <form class="product-action-buttons" action="" method="POST">
            
             <input type="hidden" name="name" value="<?= $product->getName() ?>">
             <input type="hidden" name="picture" value="<?= $product->getPicture() ?>">
@@ -65,21 +67,8 @@
             
             <a href="./detail?product_id=<?= $product->getId() ?>" class="btn btn-primary btn-buy">
               <i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
+              </form>        
            
-           
-            
-          </form> 
-
-          <!-- <span class="font-weight-bold h4"><:?= number_format($product->getPrice(), 2, ',', ' ') ?> €</span>
-            // <button name="addCartSession" type="submit"><i class="fa fa-shopping-cart"></i></button> 
-            <a href="./panier?product_id=<:?= $product->getId() ?>" class="btn btn-primary btn-buy"><i class="fa fa-shopping-cart">
-
-            </i></a>
-           
-            
-            <a href="./detail?product_id=<:?= $product->getId() ?>" class="btn btn-primary btn-buy"><i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
-           
-        -->
 
          
           <div class="py-2 ">
@@ -90,6 +79,9 @@
 
           
         </div>
+
+       
+        
         <?php endforeach; ?>
       
         

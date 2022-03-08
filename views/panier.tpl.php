@@ -39,20 +39,27 @@
                 <div class="cart-body">
                 
                 <!-- <:?= print_r($_SESSION) ?>  -->
-              
-                  
-                    <?php foreach($_SESSION['panier'] as $key => $panierAdd) : ?>
+                <?php
+                    // Si le tableau $_GET à la clé keyCartDelete est différent de vide => sup
+                    if (!empty($_GET['keyCartDelete'])) {
+                     
+                      unset($_SESSION['panier'][$_GET['keyCartDelete']]);                      
+                    }
+                  ?>
+
+
+                    <?php foreach($_SESSION['panier'] as $keys => $panierAdd) : ?>
                     
                   <div class="cart-item">
                     <div class="row d-flex align-items-center text-center">
                       <div class="col-5">
 
-                      <?= print_r($panierAdd) ?>
+                      <!-- <:?= print_r($_SESSION['panier']["picture"] ) ?>  -->
 
                         <div class="d-flex align-items-center"><a href="detail.html">
-                          <img src="<?= $panierAdd["picture"] ?>" alt="..." class="cart-item-img" style="height: 60px;"></a>
+                          <img src="<?=$panierAdd['picture'] ?>" alt="..." class="cart-item-img" style="height: 60px;"></a>
                           <div class="cart-title text-left ml-4"><a href="detail.html" class="text-uppercase text-dark">
-                            <strong><?= $panierAdd["name"] ?></strong></a><br>
+                            <strong><?=$panierAdd["name"] ?></strong></a><br>
                           </div>
                         </div>
                       </div>
@@ -61,7 +68,7 @@
                         <div class="d-flex align-items-center">
                          
                         <form action="" method="POST">
-                        <input type="hidden" name="id" value="<?= $key ?>">
+                        <input type="hidden" name="id" value="<?= $keys?>">
                         <button name="moins" type="submit" class="btn btn-items btn-items-decrease">-</button>
                           </form>
                          
@@ -72,7 +79,7 @@
                            
                            
                           <form action="" method="POST">
-                            <input type="hidden" name="id" value="<?= $key ?>">
+                            <input type="hidden" name="id" value="<?=$keys ?>">
                             <button name="plus" type="submit" class="btn btn-items btn-items-increase">+</button>
                           </form>
                         
@@ -87,7 +94,8 @@
                       <div class="col-2 text-center"><?= intval($panierAdd['price'])*intval($panierAdd['quantity']) ?>€</div>
                       
                       
-                      <div class="col-1 text-center"><a href="?keyCartDelete=<?= $key ?>" class="cart-remove"> <i class="fa fa-times"></i></a></div>
+                      <div class="col-1 text-center"><a href="?keyCartDelete=<?= $panierAdd["id"] ?>" class="cart-remove"> 
+                      <i class="fa fa-times"></i></a></div>
                     </div>
                   </div>
                   <?php endforeach ?> 
@@ -105,9 +113,10 @@
               <a href="./" class="btn btn-link text-muted">
               <i class="fa fa-chevron-left"></i> Continuer les achats</a>
            
-             
+              <div class="">vider le panier<a href="?videPanier=<?= $panierAdd["id"] ?>" class="cart-remove"> 
+                      <i class="fa fa-trash "></i></a></div>
 
-              <a href="checkout1.html" class="btn btn-warning">Commander(<?= count($_SESSION['panier']) ?>article) <i class="fa fa-chevron-right"></i></a>
+              <a href="" class="btn btn-warning">Commander(<?= count($_SESSION['panier']) ?>article) <i class="fa fa-chevron-right"></i></a>
             </div>
           </div>
 
