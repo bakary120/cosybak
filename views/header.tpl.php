@@ -36,6 +36,9 @@
                             <a href="home" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
+                            <a href="allproduct" class="nav-link">TOUT LES PRODUITS</a>
+                        </li>
+                        <li class="nav-item">
                             <a href="#" class="nav-link">THES BIO</a>
                         </li>
                         <li class="nav-item">

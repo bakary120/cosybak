@@ -62,13 +62,32 @@ class HomeController extends MainController
         return $this->show('panier', [  
             
             'types' => $typeList,
-            'panier' => $panierAdd
+            'addpanier' => $panierAdd
             
             
         ]);
 
     }
 
+    public function Allproduct()
+    {
+        $DBCon = new DBData();
+
+       
+        $typeList = $DBCon->getType();
+        $Allproduct = $DBCon->getAllproduct(); 
+        
+          
+
+        return $this->show('allproduct', [  
+            
+            'types' => $typeList,
+            'allproduct' => $Allproduct
+            
+            
+        ]);
+
+    }
    
   
   

@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 /*
 Le fichier .htaccess permet de rediriger toutes les requêtes HTTP vers le fichier index.php ce qui nous de permet de n'avoir qu'un seul point d'entrée
 index.php est le FrontController
@@ -9,10 +9,11 @@ index.php est le FrontController
 require __DIR__ . '/model/Category.php';
 require __DIR__ . '/model/Type.php';
 require __DIR__ . '/model/Product.php';
-require __DIR__ . '/model/panier.php';
+// require __DIR__ . '/model/.php';
 
 require __DIR__ . '/inc/DBData.php';
 require __DIR__ . '/inc/sessionForm.php';
+// session_start();
 
 require __DIR__ . '/Controllers/MainController.php';
 require __DIR__ . '/Controllers/HomeController.php';
@@ -43,6 +44,8 @@ if ($url === '/') { // Accueil
     $homeController-> productDetails();
 }else if($url === '/panier') {
     $homeController-> Addpanier();
+}else if($url === '/allproduct') {
+    $homeController-> Allproduct();
 }else {
     /*
     Si aucune ne route ne correspond à l'URL définie dans la requête HTTP, nous envoyons une erreur 404 (Not Found)

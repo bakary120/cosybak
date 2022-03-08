@@ -3,16 +3,19 @@
 
 <section class="hero">
       <div class="container">
-        <!-- Breadcrumbs -->
+        
         <ol class="breadcrumb justify-content-center">
-          <!-- <li class="breadcrumb-item"><a href="index.html">Home</a></li> -->
+          
           <li class="breadcrumb-item active h3">Panier</li>
         </ol>
-        <!-- Hero Content-->
+        
         <div class="hero-content pb-5 text-center">
           
           <div class="row">   
-            <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">Vous avez <?= count($_SESSION['panier']) ?>  produits dans votre panier</p></div>
+            <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">Vous avez 
+              <?= count($_SESSION['panier']) ?> 
+              
+               produits dans votre panier</p></div>
           </div>
         </div>
       </div>
@@ -34,81 +37,76 @@
                 </div>
 
                 <div class="cart-body">
-                <?php
-                    // Si le tableau $_GET à la clé keyCartDelete est différent de vide(sup produit)
-                    if (!empty($_GET['keyCartDelete'])) {
-                     
-                      unset($_SESSION['panier'][$_GET['keyCartDelete']]);
-                      
-                     
-                    }
-                      
-                    
-                   
+                
+                <!-- <:?= print_r($_SESSION) ?>  -->
+              
                   
-                   
-                  ?>
-                  
-
-
-
-                  <!-- Product-->
-                  <!-- <:?php foreach($viewVars['panier'] as $panierAdd) : ?>  -->
                     <?php foreach($_SESSION['panier'] as $key => $panierAdd) : ?>
+                    
                   <div class="cart-item">
                     <div class="row d-flex align-items-center text-center">
                       <div class="col-5">
-                      
+
+                      <?= print_r($panierAdd) ?>
+
                         <div class="d-flex align-items-center"><a href="detail.html">
                           <img src="<?= $panierAdd["picture"] ?>" alt="..." class="cart-item-img" style="height: 60px;"></a>
-                          <div class="cart-title text-left ml-4"><a href="detail.html" class="text-uppercase text-dark"><strong><?= $panierAdd["name"] ?></strong></a><br>
+                          <div class="cart-title text-left ml-4"><a href="detail.html" class="text-uppercase text-dark">
+                            <strong><?= $panierAdd["name"] ?></strong></a><br>
                           </div>
                         </div>
                       </div>
                       <div class="col-2"><?= $panierAdd["price"] ?>€</div>
                       <div class="col-2">
                         <div class="d-flex align-items-center">
-                          <!-- Formulaire pour baisser la quantité -->
+                         
                         <form action="" method="POST">
                         <input type="hidden" name="id" value="<?= $key ?>">
                         <button name="moins" type="submit" class="btn btn-items btn-items-decrease">-</button>
                           </form>
-                          <!-- <div class="btn btn-items btn-items-decrease">-</div> -->
+                         
                           <div class="bg-white p-2 border border-dark rounded">
-                          <!-- <input value="<?= $panierAdd["quantity"] ?> " class="form-control text-center input-items" type="text">  -->
+                          <!-- <input value="<:?= $panierAdd["quantity"] ?> " class="form-control text-center input-items" type="text">   -->
                            <?= $panierAdd["quantity"] ?>
                           </div>
                            
-                           <!-- Formulaire pour augmenter la quantité -->
+                           
                           <form action="" method="POST">
                             <input type="hidden" name="id" value="<?= $key ?>">
                             <button name="plus" type="submit" class="btn btn-items btn-items-increase">+</button>
                           </form>
-                        <!-- fin Formulaire pour augmenter la quantité -->
-                          <!-- <div class="btn btn-items btn-items-increase">+</div> -->
+                        
+                          
                         </div>
                       </div>
 
                        <!-- Pour le total d'un produit, il faut multiplier le prix de l'item avec sa quantité 
                       à travers les valeurs du tableau $_SESSION
-                      https://www.php.net/manual/fr/function.intval.php
-                      -->
+                      https://www.php.net/manual/fr/function.intval.php -->
+                     
                       <div class="col-2 text-center"><?= intval($panierAdd['price'])*intval($panierAdd['quantity']) ?>€</div>
                       
-                      <!-- <div class="col-2 text-center">260€ total</div> -->
+                      
                       <div class="col-1 text-center"><a href="?keyCartDelete=<?= $key ?>" class="cart-remove"> <i class="fa fa-times"></i></a></div>
                     </div>
                   </div>
-                  <?php endforeach ?>                 
+                  <?php endforeach ?> 
+                  
+                                 
+
+                  
                   </div>
               </div>
             </div>
 
 
             <div class="my-5 d-flex justify-content-between flex-column flex-lg-row ">
-              <!-- ajouter produit au panier -->
+              
               <a href="./" class="btn btn-link text-muted">
               <i class="fa fa-chevron-left"></i> Continuer les achats</a>
+           
+             
+
               <a href="checkout1.html" class="btn btn-warning">Commander(<?= count($_SESSION['panier']) ?>article) <i class="fa fa-chevron-right"></i></a>
             </div>
           </div>
@@ -147,4 +145,4 @@
 
         </div>
       </div>
-    </section>
+    </section> 

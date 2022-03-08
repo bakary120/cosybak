@@ -135,21 +135,58 @@ class DBData
 
     public function getAddpanier()
     {
+        $sql = "
+        SELECT *
+        FROM product            
+                
         
-        //     // on récupère bien la clé 'addCartSession',
-        // if (isset($_POST['addCartSession'])) 
-        // {
-            
-        //     // si notre tableau de $_SESSION est vide à l'index 'cart'
-        //     if (empty($_SESSION['panier'])) {
-        //         // on initialise le tableau à vide
-        //         $_SESSION['panier'] = array();
-        //     }
-        //     // sinon on va remplir notre tableau de $_SESSION
-        //     // avec le tableau récupérer du formulaire en POST à l'aide de la variable globale PHP $_POST
-        //     $_SESSION['panier'][] = $_POST;
+    ";
+
+        $query = $this->pdo->query($sql);
+
+        $panierAdd = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($panierAdd as $product) {
         
-        // }
+            $panierAddobjet[] = new product($product['id'],$product['name'],$product['description'],$product['picture'],$product['price']);
+
+            }
+
+        return $panierAddobjet;
+       
+
+        
+        
+        
+         
+    }
+
+    public function getAllproduct()
+    {
+        $sql = "
+        SELECT *
+        FROM product            
+                
+        
+    ";
+
+        $query = $this->pdo->query($sql);
+
+        $AllProduct = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($AllProduct as $product) {
+        
+            $AllProductobjet[] = new product($product['id'],$product['name'],$product['description'],$product['picture'],$product['price']);
+
+            }
+
+        return $AllProductobjet;
+       
+
+        
+        
+        
+         
     }
     
 
