@@ -38,12 +38,14 @@
 
                 <div class="cart-body">
                 
-                <!-- <:?= print_r($_SESSION) ?>  -->
+                <!-- <:?= print_r($_SESSION['panier']) ?>  -->
                 <?php
                     // Si le tableau $_GET à la clé keyCartDelete est différent de vide => sup
                     if (!empty($_GET['keyCartDelete'])) {
                      
-                      unset($_SESSION['panier'][$_GET['keyCartDelete']]);                      
+                      unset($_SESSION['panier'][$_GET['keyCartDelete']]);   
+                       //  unset($_SESSION["panier"]) ;
+
                     }
                   ?>
 
@@ -59,7 +61,7 @@
                         <div class="d-flex align-items-center"><a href="detail.html">
                           <img src="<?=$panierAdd['picture'] ?>" alt="..." class="cart-item-img" style="height: 60px;"></a>
                           <div class="cart-title text-left ml-4"><a href="detail.html" class="text-uppercase text-dark">
-                            <strong><?=$panierAdd["name"] ?></strong></a><br>
+                            <strong><?=$panierAdd['name'] ?></strong></a><br>
                           </div>
                         </div>
                       </div>

@@ -10,6 +10,7 @@ require __DIR__ . '/model/Category.php';
 require __DIR__ . '/model/Type.php';
 require __DIR__ . '/model/Product.php';
 // require __DIR__ . '/model/.php';
+require __DIR__ . '/model/Connexion.php';
 
 require __DIR__ . '/inc/DBData.php';
 require __DIR__ . '/inc/sessionForm.php';
@@ -17,10 +18,11 @@ require __DIR__ . '/inc/sessionForm.php';
 
 require __DIR__ . '/Controllers/MainController.php';
 require __DIR__ . '/Controllers/HomeController.php';
+require __DIR__ . '/Controllers/ConnexionController.php';
 
 
 $homeController = new HomeController();
-
+$ConnexionController = new ConnexionController();
 
 
 if (isset($_GET['_url'])) {
@@ -46,6 +48,8 @@ if ($url === '/') { // Accueil
     $homeController-> Addpanier();
 }else if($url === '/allproduct') {
     $homeController-> Allproduct();
+}else if($url === '/connexion') {
+    $ConnexionController-> index();
 }else {
     /*
     Si aucune ne route ne correspond à l'URL définie dans la requête HTTP, nous envoyons une erreur 404 (Not Found)
