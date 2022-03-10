@@ -6,17 +6,26 @@
 // et toutes les méthodes de la classe MainController
 class ConnexionController extends MainController
 {
-    public function index()
+
+    public function index(){
+        return $this->show('connexion', [  
+            
+           
+            
+        ]);
+    }
+    public function login()
     {
         $DBCon = new DBData();
 
         
-        $typeList = $DBCon->getType();
+        $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
+       
 
         
-        // $login = NULL;
+        // // $login = NULL;
         if (!empty($_POST)){
-                $login = $DBCon->login_connect($_POST['login_email'], $_POST['password']);
+                $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
                 
                 if(!is_string($login)) {
                     $_SESSION['login'] = $login;
@@ -25,24 +34,26 @@ class ConnexionController extends MainController
                 $login = [];
             }
        
-        // La fonction show est executé depuis MainController
+      
 
         // if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
            
-        //     $quizzList = $DBCon->getAllQuizzes();
-        //     return $this->show('accueilMembre', 'headerMembre',[
-        //     'quizzes' => $quizzList,
-        //     'login' => $login
-        //     ]);
-        // } else { header('Location: accueil'); }
-
-        return $this->show('connexion', [  
+        //     $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
+        //     return $this->show('connexion',[
             
-            'connexion' => $login,
-            'types' => $typeList,
+        //     'connexion' => $login
+        //     ]);
+        // } else { header('Location: connexion'); }
+
+
+        return $this->show('home', [  
+            
+            'home' => $login,
+            // 'types' => $typeList,
 
             
         ]);
         
     }
+   
 }

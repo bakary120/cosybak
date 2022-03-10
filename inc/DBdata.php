@@ -185,32 +185,53 @@ class DBData
     }
 
 
-    public function login_connect($email, $password) {
+    public function login_connect($email, $password) 
+    {
 
-        $sql = "
-        SELECT id as user_id, firstname as user_firstname, lastname as user_lastname, email as user_email, password as user_password 
-        FROM users 
-        WHERE email = '$email' && password = '$password'
-    ";
-    
-    $query = $this->dbh->query($sql);
+            $sql = "
+            SELECT *
+            FROM user 
+            WHERE email = '$email' && password = '$password'
+        ";
+        
+        $query = $this->pdo->query($sql);
 
-    $user = $query->fetch(PDO::FETCH_ASSOC);
+        // $user = $query->fetch(PDO::FETCH_ASSOC);
 
-    if (isset($user) && !empty($user)){
-        $userObject = new connexion ($user['user_id'], 
-                                    $user['user_firstname'],
-                                    $user['user_lastname'],
-                                    $user['user_email'], 
-                                    $user['user_password']);
-    } else {
-        $userObject = "Login et/ou Mot de passe incorrect(s).";
+        if (isset($_POST['login'])) {
+                $username = $_POST['email'];
+                $password = $_POST['password'];
+
+            $user = $query->fetch(PDO::FETCH_ASSOC);
+
+            if (isset($user[$username])) {
+
+                if ($user[$username]['passe']== $password) {
+
+                    header('location: home');
+                }else {
+                    echo 'alert ("mauvais mot de passe")';
+                }
+            }else {
+                
+                echo 'alert ("cet utilisateur n\'existe pas")';
+
+            }
+
+        } 
+
+        if (isset($_SESSION['username'])) {
+            header("location: home");
+        }
+
+        // if (isset($user) && !empty($user)){
+        //     $userObject [] = new user($user['id'], $user['lastname'], $user['firstname'],$user['email'],  $user['password']);
+        // } else {
+        //     $userObject = "Login et/ou Mot de passe incorrect(s).";
+        // }
+        
+        // return $userObject;
     }
-    
-    return $userObject;
-    }
-    
-
   
  
 }

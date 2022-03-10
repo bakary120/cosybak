@@ -58,11 +58,10 @@ if (isset($_POST['moins'])) {
 }
 
 if (!empty($_GET['videPanier'])) {
-                     
-  
-    
-     unset($_SESSION["panier"]) ;
-     header('Location:panier');
-  }
+   unset($_SESSION["panier"]) ;
+   header('Location:panier');
+}
 
 //   unset($_SESSION["panier"]) ;
+
+

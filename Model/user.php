@@ -1,6 +1,6 @@
 <?php
 
-class Connexion 
+class user
 {
 
     private $id;

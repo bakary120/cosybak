@@ -61,7 +61,7 @@
                         </div>
                         <!-- lien vers la pages de connexion et d'inscription-->
                         <div class="nav-item">
-                            <a href="#" class="navbar-icon-link"><i class="fa fa-user"></i></a>
+                            <a href="connexion" class="navbar-icon-link"><i class="fa fa-user"></i></a>
                         </div>
                         <!-- panier-->
                         <div class="nav-item dropdown">
@@ -73,6 +73,7 @@
                                    
                                     <span class="badge badge-secondary">
                                          <!-- <:?= array_sum($_SESSION["panier"])?>  -->
+                                         <?= count($_SESSION["panier"]) ?> 
                                         </span>
                                     
                                       <!-- <a id="dropdownCart" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle topbar-link"></a>

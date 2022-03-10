@@ -10,7 +10,7 @@ require __DIR__ . '/model/Category.php';
 require __DIR__ . '/model/Type.php';
 require __DIR__ . '/model/Product.php';
 // require __DIR__ . '/model/.php';
-require __DIR__ . '/model/Connexion.php';
+require __DIR__ . '/model/user.php';
 
 require __DIR__ . '/inc/DBData.php';
 require __DIR__ . '/inc/sessionForm.php';
