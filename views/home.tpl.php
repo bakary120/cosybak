@@ -30,17 +30,17 @@
 </section>
 
 
+  <!-- <div >
   <div >
-  <div >
-      <p>Bonjour <span><?= $_SESSION['login']->getFirstname()?></span></p>
+      <p>Bonjour <span><:?= $_SESSION['login']->getFirstname()?></span></p>
      
   </div>
   <div>        
-    <a href="profil?userId=<?=  $_SESSION['login']->getId() ?>" class="fa fa-user">__PROFIL</a>
+    <a href="profil?userId=<;?=  $_SESSION['login']->getId() ?>" class="fa fa-user">__PROFIL</a>
     <a href="logout">
     <input type="button" id="button" value="Déconnexion"></a>
   </div>
-</div>
+</div> -->
 
  
 

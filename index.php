@@ -19,10 +19,12 @@ require __DIR__ . '/inc/sessionForm.php';
 require __DIR__ . '/Controllers/MainController.php';
 require __DIR__ . '/Controllers/HomeController.php';
 require __DIR__ . '/Controllers/ConnexionController.php';
+require __DIR__ . '/Controllers/InscriptionController.php';
 
 
 $homeController = new HomeController();
 $ConnexionController = new ConnexionController();
+$InscriptionController = new InscriptionController();
 
 
 if (isset($_GET['_url'])) {
@@ -50,6 +52,8 @@ if ($url === '/') { // Accueil
     $homeController-> Allproduct();
 }else if($url === '/connexion') {
     $ConnexionController-> index();
+}else if($url === '/insc') {
+    $InscriptionController-> index();
 }else {
     /*
     Si aucune ne route ne correspond à l'URL définie dans la requête HTTP, nous envoyons une erreur 404 (Not Found)

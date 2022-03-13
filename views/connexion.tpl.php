@@ -33,7 +33,7 @@
             </div>
 
             <div>
-              <p class="mb-0">vous-avez pas de compte? <a href="#!" class="text-white-50 fw-bold">S'inscrire</a></p>
+              <p class="mb-0">vous-avez pas de compte? <a href="insc" class="text-white-50 fw-bold">S'inscrire</a></p>
             </div>
 
           </div>

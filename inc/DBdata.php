@@ -183,55 +183,25 @@ class DBData
         return $AllProductobjet;       
          
     }
-
-
-    public function login_connect($email, $password) 
-    {
+    // inscription
+    public function getinscription($lastname, $firstname, $email, $password) {
 
             $sql = "
-            SELECT *
-            FROM user 
-            WHERE email = '$email' && password = '$password'
-        ";
-        
-        $query = $this->pdo->query($sql);
+            INSERT INTO 
+            user (`lastname`, `firstname`, `email`, `password`) 
+            VALUES 
+            ('$lastname', '$firstname', '$email', '$password')
+            ";
 
-        // $user = $query->fetch(PDO::FETCH_ASSOC);
+            $exec = $this->pdo->exec($sql);
 
-        if (isset($_POST['login'])) {
-                $username = $_POST['email'];
-                $password = $_POST['password'];
-
-            $user = $query->fetch(PDO::FETCH_ASSOC);
-
-            if (isset($user[$username])) {
-
-                if ($user[$username]['passe']== $password) {
-
-                    header('location: home');
-                }else {
-                    echo 'alert ("mauvais mot de passe")';
-                }
-            }else {
-                
-                echo 'alert ("cet utilisateur n\'existe pas")';
-
-            }
-
-        } 
-
-        if (isset($_SESSION['username'])) {
-            header("location: home");
-        }
-
-        // if (isset($user) && !empty($user)){
-        //     $userObject [] = new user($user['id'], $user['lastname'], $user['firstname'],$user['email'],  $user['password']);
-        // } else {
-        //     $userObject = "Login et/ou Mot de passe incorrect(s).";
-        // }
-        
-        // return $userObject;
+            if ($exec==1){
+                return true;
+            } else { return false; }
     }
-  
+
+
+   
+    
  
 }
