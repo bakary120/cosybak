@@ -9,55 +9,51 @@ class ConnexionController extends MainController
 
     public function index(){
         $DBCon = new DBData();
-        $typeList = $DBCon->getType();       
+        $typeList = $DBCon->getType(); 
+        $categoryList = $DBCon->getCategory();
+
+        if (!empty($_POST['email']) && !empty($_POST['password'])){
+            $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
+        $typeList = $DBCon->getType();   
+
+            $_SESSION['login'] = $login;
+        } else { 
+            $login = [];
+        }
+
 
         return $this->show('connexion', [  
             'types' => $typeList,
+            'categories' => $categoryList,
+
             
            
             
         ]);
     }
-    public function login()
-    {
-        // $DBCon = new DBData();
+    public function connexion(){
+        $DBCon = new DBData();
+        $typeList = $DBCon->getType(); 
+        $categoryList = $DBCon->getCategory();
 
-        
-        // $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
-       
+        if (!empty($_POST['email']) && !empty($_POST['password'])){
+            $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
+        $typeList = $DBCon->getType();   
 
-        
-        // // // $login = NULL;
-        // if (!empty($_POST)){
-        //         $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
-                
-        //         if(!is_string($login)) {
-        //             $_SESSION['login'] = $login;
-        //         }
-        //     } else { 
-        //         $login = [];
-        //     }
-       
-      
+            $_SESSION['login'] = $login;
+        } else { 
+            $login = [];
+        }
 
-        // if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
+
+        return $this->show('home', [  
+            'types' => $typeList,
+            'categories' => $categoryList,
+
+            
            
-        //     $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
-        //     return $this->show('connexion',[
             
-        //     'connexion' => $login
-        //     ]);
-        // } else { header('Location: connexion'); }
-
-
-        // return $this->show('home', [  
-            
-        //     'home' => $login,
-        //     // 'types' => $typeList,
-
-            
-        // ]);
-        
+        ]);
     }
    
 }

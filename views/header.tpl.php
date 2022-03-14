@@ -60,16 +60,6 @@
                             <a href="#" class="navbar-icon-link"><i class="fa fa-search"></i></a>
                         </div>
 
-
-<!-- changer en profil en cas de connexion et affiche bouton deconnexion -->
-                        <!-- lien vers la pages de connexion et d'inscription-->
-                        <div class="nav-item">
-                            <a href="connexion" class="navbar-icon-link"><i class="fa fa-user"></i></a>
-                        </div>
-                        <!-- panier-->
-
-
-
                         <div class="nav-item dropdown">
                             <div class="d-none d-lg-block">
                                 <!-- lien panier -->
@@ -88,32 +78,67 @@
                                 </a>
                             </div>
                         </div>
+
+
+                          <!-- profil et logout -->
+                          <?php if (!empty($_SESSION['login'])): ?>
+                                        <div id="membre">
+                                    
+                                   
+                                    <div id="navbar" classe="btn btn-primary">
+                                        <?php 
+                                        // var_dump($viewVars['userInfo']); 
+                                        ?>
+                                    <a href="profil?userId=<?=  $_SESSION["login"]->getId() ?>" class="fa fa-user text-black">__PROFIL</a>
+                                    <a href="logout" class="btn btn-danger">Déconnexion</a>
+                                    
+                                    <!-- <a href="logout" classe="btn btn-danger">
+                                        <input type="button"  value="Déconnexion"></a> -->
+                                    </div>
+                                </div>
+                                <?php endif; ?>
+                            <!--fin de profil et logout -->
+
+
+                            <?php if (empty($_SESSION['login'])): ?>
+                                <!-- changer en profil en cas de connexion et affiche bouton deconnexion -->
+                        <!-- lien vers la pages de connexion et d'inscription-->
+                        <div class="nav-item">
+                            <a href="connexion" class="navbar-icon-link"><i class="fa fa-user"></i></a>
+                        </div>
+                        <!-- panier-->
+                        <?php endif; ?>
+
+
                     </div>
                 </div>
         </nav>
-        <br>
-        <br>
-        <br>
+      
+        <!-- <:?php 
+         print_r($_SESSION['login']);
+         ?> -->
+                            <br>
+                            <br>
 
-
-        <?php if (!empty($login)): ?>
+        <?php if (!empty($_SESSION['login'])): ?>
         <div id="inscre">
      
-     <div id="salut">
-         <p>Bonjour <span><?= $_SESSION['login']->getFirstname()?></span></p>
-         <?php 
-         // var_dump($_SESSION['login']);
-         ?>
+     <div class="text-center font-weight-bold h3">
+         <p>Bonjour <span><?= $_SESSION['login']->getLastname()?></span></p>
+       
      </div>
-     <div id="navbar">
+     <!-- <div id="navbar">
         <?php 
          // var_dump($viewVars['userInfo']); 
         ?>
-       <a href="profil?userId=<?=  $_SESSION["login"]->getId() ?>" class="fa fa-user">__PROFIL</a>
+       <a href="profil?userId=<:?=  $_SESSION["login"]->getId() ?>" class="fa fa-user">__PROFIL</a>
        <a href="connected" class="fa fa-home home-membre" ></a>
        <a href="logout">
          <input type="button" id="button" value="Déconnexion"></a>
-     </div>
+     </div> -->
    </div>
    <?php endif; ?>
+   <br>
+        <br>
+        <br>
     </header>

@@ -81,7 +81,7 @@
             </div>
 
             <div>
-              <p class="mb-0">vous-avez dèja un compte <a href="insc" class="text-white-50 fw-bold">connexion</a></p>
+              <p class="mb-0">vous-avez dèja un compte <a href="connexion" class="text-white-50 fw-bold">connexion</a></p>
             </div>
 
           </div>
@@ -92,52 +92,3 @@
 </section>
 
 
-<!-- 
-    <section class="contenu">
-        <div class="wrapper" ">
-            <div class="">
-                <form action="" >
-                    <h3>Inscription</h3>
-                    <div class="form-group">
-                        <div class="form-wrapper">
-                        <label for=""> Nom</label>
-                        <input class="control-control"  name="lastname" type="text" placeholder="Nom"> 
-                        </div>
-
-                        <div class="form-wrapper">
-                        <label for="">Prénom</label>
-                        <input class="control-control"  name="firstname" type="text" placeholder="Prénom"> 
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-wrapper">
-                    <label for="">Email</label>
-                    <input class="control-control"  name="email" type="email" placeholder="E-mail">
-                    </div>
-
-                    <div class="form-wrapper">
-                    <label for="">mot de passe</label>
-                    <input class="control-control"  name="password" type="password" placeholder="Mot de passe">
-                    </div>
-
-
-                    <!-- <div class="form-wrapper">
-                    <label for="">Confirmer votre mot de passe</label>
-                    <input type="password" class="form-control" name="password">
-                    </div> -->
-
-                    <!-- <div class="checkbox">
-                    <label>
-                    <input type="checkbox"> I caccept the Terms of Use & Privacy Policy.
-                    <span class="checkmark"></span>
-                    </label>
-                    </div> 
-
-                    <button name= "connexion" class="btn btn-primary btn-lg px-5" type="submit">inscription</button>
-                </form>
-            </div>
-        </div>
-        
-    </section> -->

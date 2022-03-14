@@ -27,24 +27,28 @@ class InscriptionController extends MainController
             $newUser = [];
         }
 
-        if (!empty($_POST['email']) && !empty($_POST['password'])){
-            $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
-        $typeList = $DBCon->getType();   
+        // if (!empty($_POST['email']) && !empty($_POST['password'])){
+        //     $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
+        // $typeList = $DBCon->getType();   
 
-            $_SESSION['login'] = $login;
-        } else { 
-            $login = [];
-        }
+        //     $_SESSION['login'] = $login;
+        // } else { 
+        //     $login = [];
+        // }
        
+            $login = [];
         
 
         if (empty($_POST['firstname']) || empty($_POST['lastname']) || empty($_POST['email']) || empty($_POST['password'])){
+        $typeList = $DBCon->getType();   
            
             return $this->show('formulaire_insc', [
                 
                 'insc' => $inscription,
                 'newUser' => $newUser,
-                'login' => $login
+                'login' => $login,
+            'types' => $typeList
+
             ]);
         } else {
             

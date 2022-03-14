@@ -20,11 +20,13 @@ require __DIR__ . '/Controllers/MainController.php';
 require __DIR__ . '/Controllers/HomeController.php';
 require __DIR__ . '/Controllers/ConnexionController.php';
 require __DIR__ . '/Controllers/InscriptionController.php';
+require __DIR__ . '/Controllers/LogoutController.php';
 
 
 $homeController = new HomeController();
 $ConnexionController = new ConnexionController();
 $InscriptionController = new InscriptionController();
+$logoutController = new logoutController();
 
 
 if (isset($_GET['_url'])) {
@@ -51,9 +53,11 @@ if ($url === '/') { // Accueil
 }else if($url === '/allproduct') {
     $homeController-> Allproduct();
 }else if($url === '/connexion') {
-    $ConnexionController-> index();
+    $ConnexionController-> connexion();
 }else if($url === '/insc') {
     $InscriptionController-> index();
+}else if($url === '/logout') {
+    $logoutController-> index();
 }else {
     /*
     Si aucune ne route ne correspond à l'URL définie dans la requête HTTP, nous envoyons une erreur 404 (Not Found)
