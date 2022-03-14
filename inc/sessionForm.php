@@ -25,10 +25,11 @@ if (isset($_POST['addCartSession'])) {
         // $_SESSION['panier'][] = $_POST;
         $_SESSION['panier'][] = $_POST;
 
-   
+      
     // On redirige vers la page panier.tpl.php
     header('Location:panier');   
 }
+
 
 
 

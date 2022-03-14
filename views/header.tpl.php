@@ -27,7 +27,7 @@
        
         <nav class="navbar navbar-expand-lg navbar-sticky navbar-airy navbar-light">
         
-            <div class="container-fluid">
+            <div class="container-fluid h5">
                 <!-- Navbar  -->
                
                 <div id="navbarCollapse" class="collapse navbar-collapse">
@@ -70,44 +70,38 @@
                                     <span class="badge badge-secondary">
                                          <!-- <:?= array_sum($_SESSION["panier"])?>  -->
                                          <?= count($_SESSION["panier"]) ?> 
-                                        </span>
+                                    </span>
                                     
-                                      <!-- <a id="dropdownCart" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle topbar-link"></a>
-                                      <div aria-labelledby="dropdownCart" class="dropdown-menu dropdown-menu-right">
-                                    </div> -->
+                                      
                                 </a>
                             </div>
                         </div>
 
 
-                          <!-- profil et logout -->
-                          <?php if (!empty($_SESSION['login'])): ?>
-                                        <div id="membre">
-                                    
-                                   
-                                    <div id="navbar">
-                                        <!-- <:?php 
-                                        var_dump($_SESSION['login']); 
-                                        unset($_SESSION); 
-                                        ?> -->
-                                    <a href="profil?userId=<?=  $_SESSION["login"]->getId() ?>" class="fa fa-user text-black">_<?=  $_SESSION["login"]->getLastname() ?></a>
-                                   
-                                    <a href="logout" class="btn btn-danger">Déconnexion</a>
-                                    
-                                   
-                                    </div>
+                        <!-- profil et logout -->
+                        <?php if (!empty($_SESSION['login'])): ?>
+                            <div id="membre">
+                                <div id="navbar">
+                                <!-- <:?php 
+                                var_dump($_SESSION['login']); 
+                                unset($_SESSION); 
+                                ?> -->
+                                <a href="profil?userId=<?=  $_SESSION["login"]->getId() ?>" class="fa fa-user h3">_<?=  $_SESSION["login"]->getLastname() ?></a>
+                                <a href="logout" class="btn btn-danger">Déconnexion</a>
+                                        
                                 </div>
-                                <?php endif; ?>
-                            <!--fin de profil et logout -->
+                            </div>
+                        <?php endif; ?>
+                        <!--fin de profil et logout -->
 
 
-                            <?php if (empty($_SESSION['login'])): ?>
-                                <!-- changer en profil en cas de connexion et affiche bouton deconnexion -->
-                        <!-- lien vers la pages de connexion et d'inscription-->
-                        <div class="nav-item">
-                            <a href="connexion" class="navbar-icon-link"><i class="fa fa-user"></i></a>
-                        </div>
-                        <!-- panier-->
+                        <?php if (empty($_SESSION['login'])): ?>
+                            <!-- changer en profil en cas de connexion et affiche bouton deconnexion -->
+                            <!-- lien vers la pages de connexion et d'inscription-->
+                            <div class="nav-item">
+                                <a href="connexion" class="navbar-icon-link"><i class="fa fa-user"></i></a>
+                            </div>
+                            <!-- panier-->
                         <?php endif; ?>
 
 
@@ -115,31 +109,10 @@
                 </div>
         </nav>
       
-        <!-- <:?php 
-         print_r($_SESSION['login']);
-         ?> -->
-                            <br>
-                            <br>
-
-        <?php if (!empty($_SESSION['login'])): ?>
-        <div id="inscre">
-     
-     <div class="text-center font-weight-bold h3">
-         <p>Bonjour <span><?= $_SESSION['login']->getLastname()?></span></p>
        
-     </div>
-     <!-- <div id="navbar">
-        <?php 
-         // var_dump($viewVars['userInfo']); 
-        ?>
-       <a href="profil?userId=<:?=  $_SESSION["login"]->getId() ?>" class="fa fa-user">__PROFIL</a>
-       <a href="connected" class="fa fa-home home-membre" ></a>
-       <a href="logout">
-         <input type="button" id="button" value="Déconnexion"></a>
-     </div> -->
-   </div>
-   <?php endif; ?>
-   <br>
-        <br>
-        <br>
+         <br>
+         <br>
+
+       
+  
     </header>
