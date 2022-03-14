@@ -85,15 +85,16 @@
                                         <div id="membre">
                                     
                                    
-                                    <div id="navbar" classe="btn btn-primary">
-                                        <?php 
-                                        // var_dump($viewVars['userInfo']); 
-                                        ?>
-                                    <a href="profil?userId=<?=  $_SESSION["login"]->getId() ?>" class="fa fa-user text-black">__PROFIL</a>
+                                    <div id="navbar">
+                                        <!-- <:?php 
+                                        var_dump($_SESSION['login']); 
+                                        unset($_SESSION); 
+                                        ?> -->
+                                    <a href="profil?userId=<?=  $_SESSION["login"]->getId() ?>" class="fa fa-user text-black">_<?=  $_SESSION["login"]->getLastname() ?></a>
+                                   
                                     <a href="logout" class="btn btn-danger">Déconnexion</a>
                                     
-                                    <!-- <a href="logout" classe="btn btn-danger">
-                                        <input type="button"  value="Déconnexion"></a> -->
+                                   
                                     </div>
                                 </div>
                                 <?php endif; ?>

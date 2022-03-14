@@ -1,7 +1,12 @@
 <?php
 
-session_start();
+// session_start();
+
+// unset($_SESSION);
 
 session_unset();
 
-header('location: home');
+header('Location:home');
+
+
+   

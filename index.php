@@ -53,7 +53,7 @@ if ($url === '/') { // Accueil
 }else if($url === '/allproduct') {
     $homeController-> Allproduct();
 }else if($url === '/connexion') {
-    $ConnexionController-> connexion();
+    $ConnexionController-> index();
 }else if($url === '/insc') {
     $InscriptionController-> index();
 }else if($url === '/logout') {

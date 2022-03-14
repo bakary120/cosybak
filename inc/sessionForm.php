@@ -5,6 +5,9 @@
  if(!isset($_SESSION['panier'])) {
   $_SESSION['panier'] = []; 
   }
+//   if(!isset($_SESSION['login'])) {
+//     $_SESSION['login'] = []; 
+//     }
  
     // formulaire avec le bouton qui a pour name 'addCartSession'
 // on verifie (ce qu'on récupère de notre formulaire 'addCartSesssion')

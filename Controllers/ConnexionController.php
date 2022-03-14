@@ -12,48 +12,57 @@ class ConnexionController extends MainController
         $typeList = $DBCon->getType(); 
         $categoryList = $DBCon->getCategory();
 
+        // if (!empty($_POST['email']) && !empty($_POST['password'])){
+        //     $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
+        // $typeList = $DBCon->getType();   
+
+        //     $_SESSION['login'] = $login;
+        // } else { 
+        //     $login = [];
+        // }
+
         if (!empty($_POST['email']) && !empty($_POST['password'])){
             $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
-        $typeList = $DBCon->getType();   
+            $typeList = $DBCon->getType();   
 
             $_SESSION['login'] = $login;
+            return $this->show('home', [  
+                'types' => $typeList,
+                'categories' => $categoryList,
+            ]);
         } else { 
             $login = [];
         }
-
 
         return $this->show('connexion', [  
             'types' => $typeList,
             'categories' => $categoryList,
+  
+        ]);
+    }
+    // public function connexion(){
+    //     $DBCon = new DBData();
+    //     $typeList = $DBCon->getType(); 
+    //     $categoryList = $DBCon->getCategory();
+
+    //     if (!empty($_POST['email']) && !empty($_POST['password'])){
+    //         $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
+    //     $typeList = $DBCon->getType();   
+
+    //         $_SESSION['login'] = $login;
+    //     } else { 
+    //         $login = [];
+    //     }
+
+
+    //     return $this->show('home', [  
+    //         'types' => $typeList,
+    //         'categories' => $categoryList,
 
             
            
             
-        ]);
-    }
-    public function connexion(){
-        $DBCon = new DBData();
-        $typeList = $DBCon->getType(); 
-        $categoryList = $DBCon->getCategory();
-
-        if (!empty($_POST['email']) && !empty($_POST['password'])){
-            $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
-        $typeList = $DBCon->getType();   
-
-            $_SESSION['login'] = $login;
-        } else { 
-            $login = [];
-        }
-
-
-        return $this->show('home', [  
-            'types' => $typeList,
-            'categories' => $categoryList,
-
-            
-           
-            
-        ]);
-    }
+    //     ]);
+    // }
    
 }
