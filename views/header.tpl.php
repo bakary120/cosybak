@@ -59,11 +59,17 @@
                         <div class="nav-item navbar-icon-link">
                             <a href="#" class="navbar-icon-link"><i class="fa fa-search"></i></a>
                         </div>
+
+
+<!-- changer en profil en cas de connexion et affiche bouton deconnexion -->
                         <!-- lien vers la pages de connexion et d'inscription-->
                         <div class="nav-item">
                             <a href="connexion" class="navbar-icon-link"><i class="fa fa-user"></i></a>
                         </div>
                         <!-- panier-->
+
+
+
                         <div class="nav-item dropdown">
                             <div class="d-none d-lg-block">
                                 <!-- lien panier -->
@@ -88,4 +94,26 @@
         <br>
         <br>
         <br>
+
+
+        <?php if (!empty($login)): ?>
+        <div id="inscre">
+     
+     <div id="salut">
+         <p>Bonjour <span><?= $_SESSION['login']->getFirstname()?></span></p>
+         <?php 
+         // var_dump($_SESSION['login']);
+         ?>
+     </div>
+     <div id="navbar">
+        <?php 
+         // var_dump($viewVars['userInfo']); 
+        ?>
+       <a href="profil?userId=<?=  $_SESSION["login"]->getId() ?>" class="fa fa-user">__PROFIL</a>
+       <a href="connected" class="fa fa-home home-membre" ></a>
+       <a href="logout">
+         <input type="button" id="button" value="Déconnexion"></a>
+     </div>
+   </div>
+   <?php endif; ?>
     </header>

@@ -8,7 +8,11 @@ class ConnexionController extends MainController
 {
 
     public function index(){
+        $DBCon = new DBData();
+        $typeList = $DBCon->getType();       
+
         return $this->show('connexion', [  
+            'types' => $typeList,
             
            
             
@@ -16,23 +20,23 @@ class ConnexionController extends MainController
     }
     public function login()
     {
-        $DBCon = new DBData();
+        // $DBCon = new DBData();
 
         
-        $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
+        // $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
        
 
         
-        // // $login = NULL;
-        if (!empty($_POST)){
-                $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
+        // // // $login = NULL;
+        // if (!empty($_POST)){
+        //         $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
                 
-                if(!is_string($login)) {
-                    $_SESSION['login'] = $login;
-                }
-            } else { 
-                $login = [];
-            }
+        //         if(!is_string($login)) {
+        //             $_SESSION['login'] = $login;
+        //         }
+        //     } else { 
+        //         $login = [];
+        //     }
        
       
 
@@ -46,13 +50,13 @@ class ConnexionController extends MainController
         // } else { header('Location: connexion'); }
 
 
-        return $this->show('home', [  
+        // return $this->show('home', [  
             
-            'home' => $login,
-            // 'types' => $typeList,
+        //     'home' => $login,
+        //     // 'types' => $typeList,
 
             
-        ]);
+        // ]);
         
     }
    

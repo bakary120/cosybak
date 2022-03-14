@@ -186,6 +186,7 @@ class DBData
     // inscription
     public function getinscription($lastname, $firstname, $email, $password) {
 
+       
             $sql = "
             INSERT INTO 
             user (`lastname`, `firstname`, `email`, `password`) 
@@ -198,6 +199,48 @@ class DBData
             if ($exec==1){
                 return true;
             } else { return false; }
+     
+       
+    }
+
+    public function getinscription2($lastname,$firstname, $email, $password) {
+
+        $sql2 = "
+        SELECT *
+         FROM user 
+        WHERE lastname = '$lastname' && firstname = '$firstname' && email = '$email' && password = '$password'
+    ";
+
+    $query = $this->pdo->query($sql2);
+
+    $newUser = $query->fetchAll(PDO::FETCH_ASSOC);
+    
+    $newUserObject = new User($newUser[0]['id'], $newUser[0]['firstname'], $newUser[0]['lastname'], 
+    $newUser[0]['email'],  $newUser[0]['password']);
+
+    return $newUserObject;
+    }
+    // connexion
+    public function login_connect($email, $password) {
+
+        $sql = "
+        SELECT * 
+        FROM user
+        WHERE email = '$email' && password = '$password'
+    ";
+    
+    $query = $this->pdo->query($sql);
+
+    $User = $query->fetch(PDO::FETCH_ASSOC);
+
+    if (isset($User) && !empty($User)){
+        $UserObject = new User($User['id'], $User['firstname'], $User['lastname'],
+        $User['email'],  $User['password']);
+    } else {
+        $UserObject = "Login et/ou Mot de passe incorrect(s).";
+    }
+    
+    return $UserObject;
     }
 
 
