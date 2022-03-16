@@ -8,14 +8,18 @@ class HomeController extends MainController
 
         $categoryList = $DBCon->getCategory();
         $typeList = $DBCon->getType();
+        $categorytype = $DBCon->getCategorys('category_id'); 
         
 
         return $this->show('home', [
             'categories' => $categoryList,
-            'types' => $typeList
+            'types' => $typeList,
+            'categoryType' => $categorytype,
+            'categories' => $categoryList 
         ]);
 
     }
+  
 
     public function product()
     {
@@ -23,12 +27,16 @@ class HomeController extends MainController
 
         $categoryOneList = $DBCon->getCategoryOne($_GET['category_id']);        
         $product = $DBCon->getCategorys($_GET['category_id']);        
-        $typeList = $DBCon->getType();       
+        $typeList = $DBCon->getType();  
+        $categoryList = $DBCon->getCategory();
+        $categorytype = $DBCon->getCategorys('category_id');     
 
         return $this->show('category', [  
             'categoryOne' => $categoryOneList,
             'products' => $product,            
-            'types' => $typeList
+            'types' => $typeList,
+            'categoryType' => $categorytype,
+            'categories' => $categoryList 
         ]);
 
     }
@@ -39,11 +47,15 @@ class HomeController extends MainController
 
         $typeList = $DBCon->getType();
         $product = $DBCon->getDetailsproduct($_GET['product_id']);
+        $categoryList = $DBCon->getCategory();
+        $categorytype = $DBCon->getCategorys('category_id');
             
 
         return $this->show('detail', [  
             'types' => $typeList,
-            'productDetails' => $product
+            'productDetails' => $product,
+            'categoryType' => $categorytype,
+            'categories' => $categoryList  
             
         ]);
 
@@ -53,16 +65,19 @@ class HomeController extends MainController
     {
         $DBCon = new DBData();
 
-       
+        $categoryList = $DBCon->getCategory();
+        $categorytype = $DBCon->getCategorys('category_id');
         $typeList = $DBCon->getType();
-        $panierAdd = $DBCon->getAddpanier($_POST); 
+        $panierAdd = $DBCon->getAddpanier('id'); 
+     
         
           
 
-        return $this->show('panier', [  
-            
+        return $this->show('panier', [
             'types' => $typeList,
-            'addpanier' => $panierAdd
+            'addpanier' => $panierAdd,
+            'categoryType' => $categorytype,
+            'categories' => $categoryList  
             
             
         ]);
@@ -76,19 +91,46 @@ class HomeController extends MainController
        
         $typeList = $DBCon->getType();
         $Allproduct = $DBCon->getAllproduct(); 
+        $categoryList = $DBCon->getCategory();
+        $categorytype = $DBCon->getCategorys('category_id');
         
           
 
         return $this->show('allproduct', [  
             
             'types' => $typeList,
-            'allproduct' => $Allproduct
-            
+            'allproduct' => $Allproduct,
+            'categoryType' => $categorytype,
+            'categories' => $categoryList
+        
             
         ]);
 
     }
    
+    public function OneCategoryProduct()
+    {
+        $DBCon = new DBData();
+
+       
+        $typeList = $DBCon->getType();
+        $Allproduct = $DBCon->getAllproduct(); 
+        $categoryList = $DBCon->getCategory();
+        $categorytype = $DBCon->getCategorys('category_id');
+        
+          
+
+        return $this->show('categorytype', [  
+            
+            'types' => $typeList,
+            'allproduct' => $Allproduct,
+            'categoryType' => $categorytype,
+            'categories' => $categoryList
+
+            
+        ]);
+
+    }
   
   
     

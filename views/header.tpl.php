@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="./public/css/owl.carousel.min.css">
   <link rel="stylesheet" href="./public/css/owl.theme.default.min.css">
   <link rel="stylesheet" href="./public/css/styles.css">
+  
  
   <title>cosybak</title>
 </head>
@@ -38,10 +39,14 @@
                         <li class="nav-item">
                             <a href="allproduct" class="nav-link">TOUT LES PRODUITS</a>
                         </li>
+                        <?php foreach($viewVars['categories'] as $category) : ?>
+                         <!-- <li> <a href="#" class="text-white opacity-75"><:?= $type->getName() ?></a></li> -->
+         
                         <li class="nav-item">
-                            <a href="#" class="nav-link">THES BIO</a>
+                            <a href="./category?category_id=<?= $category->getId() ?>" class="nav-link"><?= $category->getName() ?></a>
                         </li>
-                        <li class="nav-item">
+                        <?php endforeach ?>
+                        <!-- <li class="nav-item">
                             <a href="#" class="nav-link">TISANES</a>
                         </li>
                         <li class="nav-item">
@@ -49,7 +54,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">LES COFFRETS</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a href="#" class="nav-link">Contact</a>
                         </li>

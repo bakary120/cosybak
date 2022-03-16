@@ -38,8 +38,10 @@
 
                 <div class="cart-body">
                 
-                <!-- <:?= print_r($_SESSION['panier']) ?>  -->
-                <?php
+               
+                <!-- <:?= print_r($_SESSION['panier']) ?>   -->
+              
+                <!-- <:?php
                     // Si le tableau $_GET à la clé keyCartDelete est différent de vide => sup
                     if (!empty($_GET['keyCartDelete'])) {
                      
@@ -47,7 +49,7 @@
                        //  unset($_SESSION["panier"]) ;
 
                     }
-                  ?>
+                  ?> -->
 
 
                     <?php foreach($_SESSION['panier'] as $keys => $panierAdd) : ?>
@@ -56,7 +58,7 @@
                     <div class="row d-flex align-items-center text-center">
                       <div class="col-5">
 
-                      <!-- <:?= print_r($_SESSION['panier']["picture"] ) ?>  -->
+                      <!-- <:?= print_r($_SESSION['panier']) ?>  -->
 
                         <div class="d-flex align-items-center"><a href="detail.html">
                           <img src="<?=$panierAdd['picture'] ?>" alt="..." class="cart-item-img" style="height: 60px;"></a>
@@ -118,7 +120,7 @@
               <div class="">vider le panier<a href="?videPanier=<?= $panierAdd["id"] ?>" class="cart-remove"> 
                       <i class="fa fa-trash "></i></a></div>
 
-              <a href="" class="btn btn-warning">Commander(<?= count($_SESSION['panier']) ?>article) <i class="fa fa-chevron-right"></i></a>
+              <!-- <a href="" class="btn btn-warning">Commander(<?= count($_SESSION['panier']) ?>article) <i class="fa fa-chevron-right"></i></a> -->
             </div>
           </div>
 
@@ -148,6 +150,7 @@
               <li class="order-summary-item text-secondary"><span>TVA (20%):</span><span><?= $total*20/100 ?></span></li>
               <li class="order-summary-item border-0 "><strong class="order-summary-total"><span>TOTAL(TTC)</span><br><?= $total+($total*20/100) ?>€</strong></li>
             </ul>
+            <a href="addlivraison" class="btn btn-warning">Commander(<?= count($_SESSION['panier']) ?>article) <i class="fa fa-chevron-right"></i></a>
           </div>
 
          
@@ -157,3 +160,7 @@
         </div>
       </div>
     </section> 
+
+
+   
+   

@@ -17,7 +17,12 @@ class DBData
         ];
         $this->pdo = new PDO($dsn, $username, $password, $options);
 
-       
+        // if(!isset($_SESSION)) {
+        //     session_start();
+        //  }
+        //  if(!isset($_SESSION['panier'])) {
+        //   $_SESSION['panier'] = []; 
+        //   }
     }
 
 
@@ -133,11 +138,12 @@ class DBData
     
     
 
-    public function getAddpanier()
+    public function getAddpanier($id)
     {
         $sql = "
         SELECT *
-        FROM product            
+        FROM product
+        where id= $id            
                 
         
     ";
@@ -153,13 +159,10 @@ class DBData
             }
 
         return $panierAddobjet;
-       
-
-        
-        
-        
+    
          
     }
+
 
     public function getAllproduct()
     {

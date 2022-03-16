@@ -27,7 +27,7 @@
           Affichage <strong> de </strong><strong><?= count($viewVars['allproduct']) ?> </strong>résultats
         </div>
       
-       
+        
       </header>
       <div class="row">
         <!-- product-->
@@ -51,8 +51,10 @@
             <input type="hidden" name="id" value="<?= $allproduct->getId() ?>">
           
             <span class="font-weight-bold h4"><?= number_format($allproduct->getPrice(), 2, ',', ' ') ?> €</span>
+            <!-- <a href="./paier?product_id=<?= $allproduct->getId() ?>" class="btn btn-primary btn-buy">
+          
+            </a> -->
             <button name="addCartSession" type="submit"><i class="fa fa-shopping-cart"></i></button>
-            
             <a href="./detail?product_id=<?= $allproduct->getId() ?>" class="btn btn-primary btn-buy">
               <i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
            
@@ -60,16 +62,7 @@
             
           </form> 
 
-          <!-- <span class="font-weight-bold h4"><:?= number_format($product->getPrice(), 2, ',', ' ') ?> €</span>
-            // <button name="addCartSession" type="submit"><i class="fa fa-shopping-cart"></i></button> 
-            <a href="./panier?product_id=<:?= $product->getId() ?>" class="btn btn-primary btn-buy"><i class="fa fa-shopping-cart">
-
-            </i></a>
-           
-            
-            <a href="./detail?product_id=<:?= $product->getId() ?>" class="btn btn-primary btn-buy"><i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
-           
-        -->
+       
 
          
           <div class="py-2 ">

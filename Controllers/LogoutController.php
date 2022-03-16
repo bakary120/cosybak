@@ -13,7 +13,7 @@ class LogoutController extends MainController
         // on initialise session login
         $_SESSION['login']= [];
 
-        // si session login vide retour a l'accueil l'accueil
+        // si session login different de vide retour a l'accueil 
         if(!$_SESSION['login']){
 
             return $this->show('home',[

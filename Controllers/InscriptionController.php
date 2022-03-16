@@ -10,7 +10,7 @@ class InscriptionController extends MainController
         $typeList = $DBCon->getType();  
         $categoryList = $DBCon->getCategory();
 
-        
+        // si $post est different de vide
         if (!empty($_POST['lastname']) && !empty($_POST['firstname']) && !empty($_POST['email']) && !empty($_POST['password'])){
             $inscription = $DBCon->getInscription($_POST['lastname'], $_POST['firstname'], $_POST['email'], $_POST['password']);
             if ($inscription==true){
@@ -31,7 +31,7 @@ class InscriptionController extends MainController
        
             $login = [];
         
-
+        // formulaire vide on retourne la page inscription
         if (empty($_POST['firstname']) || empty($_POST['lastname']) || empty($_POST['email']) || empty($_POST['password'])){
         $typeList = $DBCon->getType();   
            
@@ -44,7 +44,7 @@ class InscriptionController extends MainController
 
             ]);
         } else {
-            
+            // sinn on retourne a l'accueil 
             return $this->show('home',[
             
             'insc' => $inscription,
@@ -60,9 +60,23 @@ class InscriptionController extends MainController
        
     }
 
-   
+    public function livraison()
+    {
+        $DBCon = new DBData();
+        $typeList = $DBCon->getType();  
+        $categoryList = $DBCon->getCategory();
+
+        return $this->show('addlivraison',[
+            
+            
+            'types' => $typeList,
+            'categories' => $categoryList,
+
+
+            ]);
             
         
+    }
 }
 
 

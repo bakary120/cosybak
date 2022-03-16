@@ -23,10 +23,12 @@ require __DIR__ . '/Controllers/InscriptionController.php';
 require __DIR__ . '/Controllers/LogoutController.php';
 
 
+
 $homeController = new HomeController();
 $ConnexionController = new ConnexionController();
 $InscriptionController = new InscriptionController();
 $logoutController = new logoutController();
+
 
 
 if (isset($_GET['_url'])) {
@@ -58,6 +60,8 @@ if ($url === '/') { // Accueil
     $InscriptionController-> index();
 }else if($url === '/logout') {
     $logoutController-> index();
+}else if($url === '/addlivraison') {
+    $InscriptionController-> livraison();
 }else {
     /*
     Si aucune ne route ne correspond à l'URL définie dans la requête HTTP, nous envoyons une erreur 404 (Not Found)

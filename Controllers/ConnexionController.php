@@ -12,14 +12,6 @@ class ConnexionController extends MainController
         $typeList = $DBCon->getType(); 
         $categoryList = $DBCon->getCategory();
 
-        // if (!empty($_POST['email']) && !empty($_POST['password'])){
-        //     $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
-        // $typeList = $DBCon->getType();   
-
-        //     $_SESSION['login'] = $login;
-        // } else { 
-        //     $login = [];
-        // }
 
         if (!empty($_POST['email']) && !empty($_POST['password'])){
             $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
@@ -40,29 +32,5 @@ class ConnexionController extends MainController
   
         ]);
     }
-    // public function connexion(){
-    //     $DBCon = new DBData();
-    //     $typeList = $DBCon->getType(); 
-    //     $categoryList = $DBCon->getCategory();
-
-    //     if (!empty($_POST['email']) && !empty($_POST['password'])){
-    //         $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
-    //     $typeList = $DBCon->getType();   
-
-    //         $_SESSION['login'] = $login;
-    //     } else { 
-    //         $login = [];
-    //     }
-
-
-    //     return $this->show('home', [  
-    //         'types' => $typeList,
-    //         'categories' => $categoryList,
-
-            
-           
-            
-    //     ]);
-    // }
-   
+    
 }

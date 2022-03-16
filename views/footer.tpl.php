@@ -33,6 +33,8 @@
           <?php foreach($viewVars['types'] as $type) : ?>
           <li> <a href="#" class="text-white opacity-75"><?= $type->getName() ?></a></li>
           <?php endforeach ?>   
+
+         
                         
           </ul>
                    
