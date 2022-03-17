@@ -246,7 +246,23 @@ class DBData
     return $UserObject;
     }
 
+    public function getProfilModif($userId, $lastname, $firstname, $email, $password, $User) {
 
+        $sql = "
+        UPDATE users
+        SET lastname = '$lastname', firstname = '$firstname', email = '$email', password = '$password'
+        WHERE users.id = '$userId'
+        
+    ";
+
+    $exec = $this->dbh->exec($sql);
+
+
+    if ($exec==1){
+        return true;
+    } else { return false; }
+
+    }
    
     
  
