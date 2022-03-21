@@ -1,3 +1,5 @@
+
+
 <section style="background-color: #eee;">
   <div class="container py-5">
     <div class="row">
@@ -18,13 +20,16 @@
       <div class="col-lg-4">
         <div class="card mb-4">
           <div class="card-body text-center">
-
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+<!-- 
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;"> -->
             
             <h5 class="my-3"><?=  $_SESSION["login"]->getFirstname() ?> <?=  $_SESSION["login"]->getLastname() ?></h5>
             <p class="text-muted mb-1"><?=  $_SESSION["login"]->getEmail() ?></p>           
             <div class="d-flex justify-content-center mb-2">
-              <button type="button" class="btn btn-primary">Modifier Profil</button>              
+            <a href="modif?userId=<?=  $_SESSION["login"]->getId() ?>" >
+            <button type="button" class="btn btn-primary">Modifier Profil</button> 
+          </a>
+            
             </div>
           </div>
         </div>
@@ -124,3 +129,5 @@
     </div>
   </div>
 </section>
+
+

@@ -19,7 +19,7 @@ class ModifController extends MainController
         // $quizzList stocke la valeur retourner par la méthode get ()
         // donc, un tableau d'objet pour les catégories
         if (!empty($_POST) && !is_string($_SESSION['login'])){
-            $ModifUser = $DBCon->getProfilModif($_GET['userId'], $_POST['new-nom'], $_POST['new-prenom'], $_POST['new-adr_mail'], $_POST['new-mdp'], $_SESSION['login']);
+            $ModifUser = $DBCon->getProfilModif($_GET['userId'], $_POST['new-nom'], $_POST['new-prenom'], $_POST['new-adr_mail'], $_SESSION['login']);
             // $_SESSION['login'] = $ModifUser;
             
         } else { 

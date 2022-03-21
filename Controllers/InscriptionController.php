@@ -33,13 +33,16 @@ class InscriptionController extends MainController
         
         // formulaire vide on retourne la page inscription
         if (empty($_POST['firstname']) || empty($_POST['lastname']) || empty($_POST['email']) || empty($_POST['password'])){
-        $typeList = $DBCon->getType();   
+        $typeList = $DBCon->getType();  
+        $typeList = $DBCon->getType();  
+        $categoryList = $DBCon->getCategory(); 
            
             return $this->show('formulaire_insc', [
                 
                 'insc' => $inscription,
                 'newUser' => $newUser,
                 'login' => $login,
+            'categories' => $categoryList,
             'types' => $typeList
 
             ]);

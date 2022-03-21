@@ -20,8 +20,8 @@ class DBData
         // if(!isset($_SESSION)) {
         //     session_start();
         //  }
-        //  if(!isset($_SESSION['panier'])) {
-        //   $_SESSION['panier'] = []; 
+        //  if(!isset($_SESSION['admin'])) {
+        //   $_SESSION['admin'] = []; 
         //   }
     }
 
@@ -246,16 +246,20 @@ class DBData
     return $UserObject;
     }
 
-    public function getProfilModif($userId, $lastname, $firstname, $email, $password, $User) {
+   
+   
+
+
+    public function getProfilModif($userId, $lastname, $firstname, $email, $User) {
 
         $sql = "
-        UPDATE users
-        SET lastname = '$lastname', firstname = '$firstname', email = '$email', password = '$password'
-        WHERE users.id = '$userId'
+        UPDATE user
+        SET lastname = '$lastname', firstname = '$firstname', email = '$email'
+        WHERE user.id = '$userId'
         
     ";
 
-    $exec = $this->dbh->exec($sql);
+    $exec = $this->pdo->exec($sql);
 
 
     if ($exec==1){

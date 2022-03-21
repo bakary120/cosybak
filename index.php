@@ -23,6 +23,7 @@ require __DIR__ . '/Controllers/InscriptionController.php';
 require __DIR__ . '/Controllers/LogoutController.php';
 require __DIR__ . '/Controllers/ProfilController.php';
 require __DIR__ . '/Controllers/ModifController.php';
+require __DIR__ . '/Controllers/AdminController.php';
 
 
 
@@ -32,6 +33,8 @@ $InscriptionController = new InscriptionController();
 $logoutController = new logoutController();
 $ProfilController = new ProfilController();
 $ModifController = new ModifController();
+$AdminController = new AdminController();
+
 
 
 
@@ -70,6 +73,8 @@ if ($url === '/') { // Accueil
     $ProfilController-> index();
 }elseif ($url === '/modif') {
     $ModifController->index();
+}elseif ($url === '/adm') {
+    $AdminController->index();
 }else {
     /*
     Si aucune ne route ne correspond à l'URL définie dans la requête HTTP, nous envoyons une erreur 404 (Not Found)

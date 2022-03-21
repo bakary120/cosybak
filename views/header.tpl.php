@@ -72,31 +72,33 @@
                                 <a id="cartdetails" href="panier" class="navbar-icon-link">
                                     <i class="fa fa-shopping-cart"></i>
                                    
-                                    <span class="badge badge-secondary">
-                                         <!-- <:?= array_sum($_SESSION["panier"])?>  -->
+                                    <span class="badge badge-secondary">                                        
                                          <?= count($_SESSION["panier"]) ?> 
                                     </span>
-                                    
-                                      
+                                  
+                                    <!-- <:?php  unset($_SESSION);  ?>   -->
+                                    <!-- <:?php  var_dump($_SESSION['login']);  ?>   -->
+                                
                                 </a>
                             </div>
                         </div>
 
 
-                        <!-- profil et logout -->
-                        <?php if (!empty($_SESSION['login'])): ?>
+                        <!-- profil et logout -->                                        
+
+
+                         <?php if (!empty($_SESSION['login'])): ?>
                             <div id="membre">
-                                <div id="navbar">
-                                <!-- <:?php 
-                                var_dump($_SESSION['login']); 
-                                unset($_SESSION); 
-                                ?> -->
-                                <a href="profil?userId=<?=  $_SESSION["login"]->getId() ?>" class="fa fa-user h3">_<?=  $_SESSION["login"]->getLastname() ?></a>
-                                <a href="logout" class="btn btn-danger">Déconnexion</a>
-                                        
+                                <div id="navbar">                             
+                             
+                                <a href="profilmembre?userId=<?=$_SESSION["login"]->getId()?>" class="navbar-icon-link"><i class="fa fa-user">_
+                                    <?=$_SESSION['login']->getLastname()?>
+                                </i></a>
+
+                                <a href="logout" class="btn btn-danger">Déconnexion</a>                                        
                                 </div>
                             </div>
-                        <?php endif; ?>
+                        <?php endif; ?> 
                         <!--fin de profil et logout -->
 
 
@@ -118,6 +120,6 @@
          <br>
          <br>
 
-       
+        
   
     </header>
