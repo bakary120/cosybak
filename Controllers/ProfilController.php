@@ -14,26 +14,28 @@ class ProfilController extends MainController
         $typeList = $DBCon->getType();
         $categorytype = $DBCon->getCategorys('category_id'); 
            
-        if(!empty($_SESSION['login'])){ 
+        // if(!empty($_SESSION['login'])){ 
 
-                if (!empty($_POST['email']) && !empty($_POST['password'])){
-                    $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
-                    $typeList = $DBCon->getType();   
+        //         if (!empty($_POST['email']) && !empty($_POST['password'])){
+        //             $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
+        //             $typeList = $DBCon->getType();   
 
-                    $_SESSION['login'] = $login;
+        //             $_SESSION['login'] = $login;
 
                 
-                } else { 
-                    $login = [];
-                }
+        //         } else { 
+        //             $login = [];
+        //         }
 
                 return $this->show('profilmembre', [  
                     'types' => $typeList,
-                    'categories' => $categoryList,
+                'categoryType' => $categorytype,
+                'categories' => $categoryList,
+                'login' => $_SESSION['login']
             
     
                 ]);
-        }    
+        // }    
       
         
       

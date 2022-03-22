@@ -11,8 +11,8 @@
             <div class="mb-md-5 mt-md-4 pb-5">
 
               <form action="" method="POST" autocomplete="off">
-              <h2 class="fw-bold mb-2 text-uppercase">Connexion</h2>
-              <p class="text-white-50 mb-5">Veuillez entrer votre identifiant et votre mot de passe !</p>
+              <h2 class="fw-bold mb-2 text-uppercase">Connexion Admin</h2>
+              <p class="text-white-50 mb-5">Veuillez entrer votre identifiant et votre mot de passe administrateur!</p>
 
               <div class="form-outline form-white mb-4">
                 <input type="email" name="email" class="form-control form-control-lg" />
@@ -35,17 +35,14 @@
 
               <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Mots de passe oublie?</a></p>
 
-              <button name= "connexion" class="btn btn-outline-light btn-lg px-5" type="submit">Connexion</button>
+              <button name= "connexionAdmin" class="btn btn-outline-light btn-lg px-5" type="submit">Connexion</button>
 
               </form>
              
              
             </div>
 
-            <div>
-              <p class="mb-0">vous-avez pas de compte? <a href="insc" class="text-white-50 fw-bold">S'inscrire</a></p>
-            </div>
-
+           
           </div>
         </div>
       </div>
