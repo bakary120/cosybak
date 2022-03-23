@@ -32,7 +32,7 @@ class AdminController extends MainController
  
 
 if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
-    
+    $errors = [];
    
 //    en cas sesion return l'accueil 
     return $this->show('adm', [
@@ -42,14 +42,8 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
     ]);
 }
  else { 
-    echo "<script>alert(\"votre email ou mot de passe administrateur est incorrect\")</script>";
-    // echo "votre email ou mot de passe administrateur est incorrect" ; 
-    return $this->show('connexionAdmin', [
-        'types' => $typeList,
-        'categories' => $categoryList,
-        'admin' => $admin
-    ]);
-    
+  
+    echo "votre email ou mot de passe administrateur est incorrect" ; 
    
 }
 

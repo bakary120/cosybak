@@ -38,14 +38,8 @@ class ConnexionController extends MainController
             ]);
         }
          else { 
-            echo "<script>alert(\"votre email ou mot de passe  est incorrect\")</script>";
-            // echo "votre email ou mot de passe administrateur est incorrect" ; 
-            return $this->show('connexion', [
-                'types' => $typeList,
-                'categories' => $categoryList,
-                'login' => $login
-                ]);
-           
+          
+           echo "votre email ou mot de passe  est incorrect" ; 
            
         }
 
