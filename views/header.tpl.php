@@ -38,7 +38,7 @@
                             <a href="home" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="allproduct" class="nav-link">TOUT LES PRODUITS</a>
+                            <a href="allproduct" class="nav-link">TOUS LES PRODUITS</a>
                         </li>
                         <?php foreach($viewVars['categories'] as $category) : ?>
                          <li class="nav-item">

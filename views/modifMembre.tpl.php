@@ -1,32 +1,4 @@
 
- 
-<!-- <div class="container">
-       
-
-        <form action="" id="inscription-form" method="POST" autocomplete="off">
-            <input class="control-control" id="id_nom" name="new-nom" type="text" placeholder="Nom"> 
-            <input class="control-control" id ="id_prenom" name="new-prenom" type="text" placeholder="Prénom"> <br>
-            <input class="control-control" id="id_adr_mail" name="new-adr_mail" type="email" placeholder="E-mail"> 
-            <input class="control-control" id="id_mdp" name="new-mdp" type="text" placeholder="Mot de passe"> <br>
-            <input class="btn" formaction="modif?userId=<?=  $_SESSION['login']->getId() ?>"
-            type="submit" style="color:red;" id="Modifier" value="Modifier">  
-            <input class="btn" formaction="profil?userId=<?= $_SESSION['login']->getId() ?>" 
-            type="submit" style="color:red;" id="Annuler" value="Annuler">
-        </form>
-
-        <:?php 
-        if (!empty($_POST['new-nom']) && !empty($_POST['new-prenom']) && !empty($_POST['new-adr_mail']) && !empty($_POST['new-mdp'])){
-          $_SESSION['login']->setName($_POST['new-nom']);
-          $_SESSION['login']->setFirstname($_POST['new-prenom']);
-          $_SESSION['login']->setAdrMail($_POST['new-adr_mail']);
-          $_SESSION['login']->setPassword($_POST['new-mdp']);
-          header('Location: profil?userId='.$_SESSION['login']->getId().'');
-        }
-        ?>
-
-</div>               -->
-
-
 <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
         <div class="col-md-3 border-right">
@@ -47,12 +19,12 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="<?=  $_SESSION['login']->getEmail() ?>" value="" name="new-adr_mail" ></div>
-                    <div class="col-md-12"><label class="labels">Mobile</label><input type="text" class="form-control" placeholder="enter votre numero" value=""></div>
-                    <div class="col-md-12"><label class="labels">Addresse</label><input type="text" class="form-control" placeholder="enter address line 1" value=""></div>
+                    <div class="col-md-12"><label class="labels">Mobile</label><input type="text" class="form-control" placeholder="votre numero" value=""></div>
+                    <div class="col-md-12"><label class="labels">Addresse</label><input type="text" class="form-control" placeholder="address" value=""></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels">Code postale</label><input type="text" class="form-control" placeholder="country" value=""></div>
-                    <div class="col-md-6"><label class="labels">ville</label><input type="text" class="form-control" value="" placeholder="state"></div>
+                    <div class="col-md-6"><label class="labels">Code postale</label><input type="text" class="form-control" placeholder="code postale" value=""></div>
+                    <div class="col-md-6"><label class="labels">ville</label><input type="text" class="form-control" value="" placeholder="ville"></div>
                 </div>
              <div class="mt-5 text-center">
                <!-- <button class="btn btn-primary profile-button" type="button">Modifier</button> -->

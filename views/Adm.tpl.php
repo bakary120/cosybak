@@ -173,22 +173,28 @@
 <!-- fin tableau suivi commandes -->
 
 
-        <div class="col-lg-3 col-md-6 text-center">
+
+
+
+<div class="col-lg-3 col-md-6 text-center">
           <div class="card h-100">
             <div class="card-header pb-0">
               <h6 _msthash="1621087" _msttexthash="1809847">Tout les produits</h6>
               <button name= "modifProduit" class="btn btn-success btn-sm mb-3 " type="submit">Ajouter un nouveaux produit</button> 
             </div>
 
+           
+            <?php foreach($viewVars['allproduct'] as $allproduct) : ?>
+           
             <div class="card-body p-3">
               <div class="timeline timeline-one-side">
 
                 <div class="timeline-block mb-3">
               
-                <img src="./images/1.png" alt="..." class="cart-item-img " style="height: 70px;">
+                <img src="<?= $allproduct->getPicture() ?>" alt="..." class="cart-item-img " style="height: 70px;">
                   <h6>
                   <span class="timeline-step">
-                    <i class="material-icons text-success text-gradient" _msthash="2899949" _msttexthash="237263">the vert sencha</i>
+                    <i class="material-icons text-success text-gradient" _msthash="2899949" _msttexthash="237263"><?= $allproduct->getName() ?></i>
                   </span>
                   </h6>
                 
@@ -198,18 +204,20 @@
                   </div>
                  
                 </div>
-
-               
-               
-                
-           
-              </div>
+               </div>
             </div>
+            
+            <?php endforeach; ?>
+           
+
           </div>
         </div>
 
 
 
+
+        
       </div>
-      
-    </div>
+</div>
+
+

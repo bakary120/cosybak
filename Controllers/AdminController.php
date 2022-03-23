@@ -12,6 +12,8 @@ class AdminController extends MainController
         $DBCon = new DBData();
         $typeList = $DBCon->getType(); 
         $categoryList = $DBCon->getCategory();
+        $Allproduct = $DBCon->getAllproduct(); 
+
 
     if (!empty($_POST)){
         $admin = $DBCon->login_admin($_POST['email'], $_POST['password']);
@@ -23,6 +25,7 @@ class AdminController extends MainController
         $admin = [];
         return $this->show('connexionAdmin', [
             'types' => $typeList,
+            'allproduct' => $Allproduct,
             'categories' => $categoryList,
             'login' => $admin
             ]);
@@ -37,7 +40,8 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
 //    en cas sesion return l'accueil 
     return $this->show('adm', [
         'types' => $typeList,
-        'categories' => $categoryList,
+            'allproduct' => $Allproduct,
+            'categories' => $categoryList,
         'admin' => $admin
     ]);
 }
