@@ -12,9 +12,10 @@ class LogoutController extends MainController
         $categoryList = $DBCon->getCategory();
         // on initialise session login
         $_SESSION['login']= [];
+        $_SESSION['admin']= [];
 
         // si session login different de vide retour a l'accueil 
-        if(!$_SESSION['login']){
+        if(!$_SESSION['login'] && !$_SESSION['login']){
 
             return $this->show('home',[
                 'types' => $typeList,

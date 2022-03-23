@@ -58,7 +58,10 @@
                     <div class="row d-flex align-items-center text-center">
                       <div class="col-5">
 
+                      
+
                       <!-- <:?= print_r($_SESSION['panier']) ?>  -->
+                         <!-- <:?php session_unset();  ?>  -->
 
                         <div class="d-flex align-items-center"><a href="detail.html">
                           <img src="<?=$panierAdd['picture'] ?>" alt="..." class="cart-item-img" style="height: 60px;"></a>
@@ -95,7 +98,7 @@
                       à travers les valeurs du tableau $_SESSION
                       https://www.php.net/manual/fr/function.intval.php -->
                      
-                      <div class="col-2 text-center"><?= intval($panierAdd['price'])*intval($panierAdd['quantity']) ?>€</div>
+                      <div class="col-2 text-center"><?= $panierAdd['price']*$panierAdd['quantity'] ?>€</div>
                       
                       
                       <div class="col-1 text-center"><a href="?keyCartDelete=<?= $panierAdd["id"] ?>" class="cart-remove"> 
@@ -135,7 +138,7 @@
                   foreach($_SESSION['panier'] as $panierAdd) {
                     // la variable $total va ajouter à chaque passage de boucle le prix multiplié par la quantité
                     // pour chaque produits du panier
-                    $total += intval($panierAdd['price'])*intval($panierAdd['quantity']);
+                    $total += $panierAdd['price']*$panierAdd['quantity'];
                   }
 
                   if ($total < 50) {

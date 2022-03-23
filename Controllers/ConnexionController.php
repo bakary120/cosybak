@@ -1,36 +1,59 @@
-
 <?php
 
-// La classe HomeController est étendue par MainController
-// De ce fait, HomeController, hérite de toutes les propriétés
-// et toutes les méthodes de la classe MainController
 class ConnexionController extends MainController
 {
+    public function index()
+    {
+        
+                $DBCon = new DBData();
+                $typeList = $DBCon->getType(); 
+                $categoryList = $DBCon->getCategory();
 
-    public function index(){
-        $DBCon = new DBData();
-        $typeList = $DBCon->getType(); 
-        $categoryList = $DBCon->getCategory();
+            if (!empty($_POST)){
+                $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
+                
+                if(!is_string($login)) {
+                    $_SESSION['login'] = $login;
+                }
+            } else { 
+                $login = [];
+                return $this->show('connexion', [
+                    'types' => $typeList,
+                    'categories' => $categoryList,
+                    'login' => $login
+                    ]);
+            }
 
 
-        if (!empty($_POST['email']) && !empty($_POST['password'])){
-            $login = $DBCon->login_connect($_POST['email'], $_POST['password']);
-            $typeList = $DBCon->getType();   
+         
 
-            $_SESSION['login'] = $login;
-            return $this->show('home', [  
+        if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
+            $errors = [];
+           
+        //    en cas sesion return l'accueil 
+            return $this->show('home', [
                 'types' => $typeList,
                 'categories' => $categoryList,
+                'login' => $login
             ]);
-        } else { 
-            $login = [];
+        }
+         else { 
+            echo "<script>alert(\"votre email ou mot de passe  est incorrect\")</script>";
+            // echo "votre email ou mot de passe administrateur est incorrect" ; 
+            return $this->show('connexion', [
+                'types' => $typeList,
+                'categories' => $categoryList,
+                'login' => $login
+                ]);
+           
+           
         }
 
-        return $this->show('connexion', [  
-            'types' => $typeList,
-            'categories' => $categoryList,
-  
-        ]);
+
+
+     
+      
     }
-    
+
+  
 }

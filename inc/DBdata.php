@@ -23,6 +23,7 @@ class DBData
         //  if(!isset($_SESSION['admin'])) {
         //   $_SESSION['admin'] = []; 
         //   }
+       
     }
 
 
@@ -231,7 +232,7 @@ class DBData
         FROM user
         WHERE email = '$email' && password = '$password'
     ";
-    
+  
     $query = $this->pdo->query($sql);
 
     $User = $query->fetch(PDO::FETCH_ASSOC);
@@ -241,10 +242,39 @@ class DBData
         $User['email'],  $User['password']);
     } else {
         $UserObject = "Login et/ou Mot de passe incorrect(s).";
+        
     }
+
     
     return $UserObject;
     }
+
+
+    public function login_Admin($email, $password) {
+
+        $sql = "
+        SELECT * 
+        FROM user_admin
+        WHERE email = '$email' && password = '$password'
+    ";
+  
+    $query = $this->pdo->query($sql);
+
+    $User = $query->fetch(PDO::FETCH_ASSOC);
+
+    if (isset($User) && !empty($User)){
+        $UserObject = new User($User['id'], $User['firstname'], $User['lastname'],
+        $User['email'],  $User['password']);
+    } else {
+        $UserObject = "Login et/ou Mot de passe incorrect(s).";
+        
+    }
+
+    
+    return $UserObject;
+    }
+    
+
 
    
    

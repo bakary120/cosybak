@@ -11,18 +11,31 @@
 // on verifie (ce qu'on récupère de notre formulaire 'addCartSesssion')
 // on récupère bien la clé 'addCartSession',
 if (isset($_POST['addCartSession'])) {
-//  $_SESSION['panier'][] = $_POST; 
-       
 
+   
     // sinon on va remplir notre tableau de $_SESSION
     // avec le tableau récupérer du formulaire en POST à l'aide de la variable globale PHP $_POST 
-        $_SESSION['panier'][] = $_POST;
        
-    // if (empty($_SESSION['panier'])) {
-        // $_SESSION['panier'][intval($_POST['id'])]['quantity']++;  
+       
+    if (!empty($_SESSION['panier'])) {
+        $test= false;
+        for ($i=0; $i < count($_SESSION['panier']) ; $i++) { 
 
-            
-    // }
+            if ($_SESSION['panier'][$i]['id'] == $_POST['id']) {
+                $_SESSION['panier'][$i]['quantity']= $_SESSION['panier'][$i]['quantity']+1 ; 
+                $test=true; 
+            }
+           
+        }
+        if ($test==false) {
+            $_SESSION['panier'][] = $_POST;
+
+        }
+        
+    }
+    else {
+        $_SESSION['panier'][] = $_POST;
+    }
       
     // On redirige vers la page panier.tpl.php
     header('Location:panier');   
@@ -34,10 +47,6 @@ if (isset($_POST['addCartSession'])) {
 
 // Si le tableau $_GET contient la clé plus
 if (isset($_POST['plus'])) {
-    // Dans le tableau session à la clé panier
-    // puis à la clé récupérer du formulaire avec
-    // $_POST pour l'input ayant le name id
-    // puis dans la clé quantity
     // on incrémente la valeur atteinte de +1
     $_SESSION['panier'][intval($_POST['id'])]['quantity']++;
 
@@ -49,10 +58,6 @@ if (isset($_POST['plus'])) {
 if (isset($_POST['moins'])) {
     // Si la quantité est plus grande que 1
     if($_SESSION['panier'][intval($_POST['id'])]['quantity'] > 1) {
-        // Dans le tableau session à la clé panier
-        // puis à la clé récupérer du formulaire avec
-        // $_POST pour l'input ayant le name id
-        // puis dans la clé quantity
         // on décrémente la valeur atteinte de -1
         $_SESSION['panier'][intval($_POST['id'])]['quantity']--;
     }
@@ -60,13 +65,22 @@ if (isset($_POST['moins'])) {
     header('Location:panier');
 }
 
-if (!empty($_GET['keyCartDelete'])) {
-                     
-    unset($_SESSION['panier'][$_GET['keyCartDelete']]);   
-//    unset($_SESSION["panier"]) ;
-    
 
-  }
+if (!empty($_GET['keyCartDelete'])) {
+
+     if (count($_SESSION['panier']) > 1 ) {
+        for ($i=0; $i < count($_SESSION['panier']) ; $i++) { 
+            if ($_GET['keyCartDelete'] == $_SESSION['panier'][$i]['id']) {
+             unset($_SESSION['panier'][$i]); 
+            }
+         }
+     }else {
+        unset($_SESSION['panier']);
+        header('Location:panier'); 
+     }
+   
+  
+}
 
 if (!empty($_GET['videPanier'])) {
    unset($_SESSION["panier"]) ;
@@ -75,6 +89,6 @@ if (!empty($_GET['videPanier'])) {
 
 }
 
-//   unset($_SESSION["panier"]) ;
+
 
 
