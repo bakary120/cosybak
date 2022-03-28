@@ -34,7 +34,7 @@
                           
               <div class="form-group">
                 <div class="col-sm-10">
-                <input type="text" name="telephone" class="form-control " placeholder="Tel" />
+                <input type="text" name="numero" class="form-control " placeholder="numero" />
                 </div>               
               </div>
 
@@ -46,19 +46,15 @@
         							</div>
         						</div>
 
-        						<div class="form-group">
-        							<div class="col-sm-10 col-sm-offset-3">
-        								<input type="text" class="form-control" placeholder="Ville">
-        							</div>
+        						<div class="form-group">        					
         							<div class="col-sm-10">
         								<input type="text" class="form-control" placeholder="code/Postal">
         							</div>
         						</div>
 
-        						<div class="form-group">
-        							
+        						<div class="form-group">        							
         							<div class="col-sm-10">
-        								<input type="text" class="form-control" placeholder="Pays">
+        								<input type="text" class="form-control" placeholder="ville">
         							</div>
         						</div>
         				</div>

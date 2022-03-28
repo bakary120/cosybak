@@ -120,8 +120,9 @@
               <a href="./" class="btn btn-link text-muted">
               <i class="fa fa-chevron-left"></i> Continuer les achats</a>
            
-              <div class="">vider le panier<a href="?videPanier=<?= $panierAdd["id"] ?>" class="cart-remove"> 
-                      <i class="fa fa-trash "></i></a></div>
+              <div class="text-danger">vider le panier<a href="?videPanier=<?= $panierAdd["id"] ?>" class="cart-remove"> 
+                      <i class="fa fa-trash-o text-danger" ></i></a>
+              </div>
 
               <!-- <a href="" class="btn btn-warning">Commander(<?= count($_SESSION['panier']) ?>article) <i class="fa fa-chevron-right"></i></a> -->
             </div>
@@ -130,6 +131,7 @@
           
 
           <div class="col-lg-4 p-2 text-center">
+          <?php if (!empty($_SESSION['panier'])): ?>
             <ul class="order-summary mb-0 list-unstyled">
             <?php
                   // la variable $total est initialisé à 0
@@ -148,11 +150,14 @@
                     $delivery = 0;
                   }
                   ?>
+
+
                <li class="order-summary-item text-secondary"><span>Sous total :</span><span><?= $total ?>€</span></li>
                   <li class="order-summary-item text-secondary"><span>Livraison:</span><span><?= $delivery ?>€</span></li>
               <li class="order-summary-item text-secondary"><span>TVA (20%):</span><span><?= $total*20/100 ?></span></li>
               <li class="order-summary-item border-0 "><strong class="order-summary-total"><span>TOTAL(TTC)</span><br><?= $total+($total*20/100) ?>€</strong></li>
             </ul>
+            <?php endif; ?> 
             <a href="addlivraison" class="btn btn-warning">Commander(<?= count($_SESSION['panier']) ?>article) <i class="fa fa-chevron-right"></i></a>
           </div>
 

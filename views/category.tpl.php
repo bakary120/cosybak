@@ -41,8 +41,8 @@
       </header>
       <div class="row">
         <!-- product-->
+            
         <?php foreach($viewVars['products'] as $product) : ?>
-         
         <div class="product col-xl-3 col-lg-4 col-sm-6">
           <div class="product-image">
             <a href="#" class="product-hover-overlay-link">
@@ -51,40 +51,38 @@
             </a>
           </div>
 
-                      <!-- <:?= print_r($_SESSION['panier'] ["name"]) ?>  -->
 
 
-                      <form class="product-action-buttons" action="" method="POST">
+          <form class="product-action-buttons mt-4 text-center" action="" method="POST">
            
             <input type="hidden" name="name" value="<?= $product->getName() ?>">
             <input type="hidden" name="picture" value="<?= $product->getPicture() ?>">
-            <input type="hidden" name="price" value="<?= $product->getPrice() ?>">
+            <input type="hidden" name="price" value="<?=$product->getPrice() ?>">
             <input type="hidden" name="quantity" value="1">
             <input type="hidden" name="id" value="<?= $product->getId() ?>">
           
             <span class="font-weight-bold h4"><?= number_format($product->getPrice(), 2, ',', ' ') ?> €</span>
-            <button name="addCartSession" type="submit"><i class="fa fa-shopping-cart"></i></button>
             
+            <button class="btn btn-success" name="addCartSession" type="submit">Ajouter au panier</button>
             <a href="./detail?product_id=<?= $product->getId() ?>" class="btn btn-primary btn-buy">
               <i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
-              </form>        
            
+           
+            
+          </form> 
+
+       
 
          
-          <div class="py-2 ">
-          <h2 class="h6 text-uppercase mb-1 text-center"><a href="#" class="text-dark"><?= $product-> getName() ?></a></h2>
+          <div class="py-4 ">
+          <p class="h4 text-uppercase mb-1 text-center"><a href="#" class="text-dark"><?= $product-> getName() ?></a></p>
             <p class="text-muted text-sm mb-1 "><?= $product->getdescription() ?></p> 
           </div>
           
 
           
         </div>
-
-       
-        
         <?php endforeach; ?>
-      
-        
          
 
       </div>
