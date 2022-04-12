@@ -38,7 +38,7 @@
                             <a href="home" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="allproduct" class="nav-link">TOUT LES PRODUITS</a>
+                            <a href="allproduct" class="nav-link">TOUS LES PRODUITS</a>
                         </li>
                         <?php foreach($viewVars['categories'] as $category) : ?>
                          <li class="nav-item">
@@ -178,21 +178,11 @@
 
 
 
+<!-- navbar admin -->
+<?php if (!empty($_SESSION['admin'])): ?>
 
 
-
-
-
-
-
-
-
-
-        <!-- navbar admin -->
-        <?php if (!empty($_SESSION['admin'])): ?>
-
-
-            <nav class="navbar navbar-expand-lg navbar-sticky navbar-airy navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-sticky navbar-airy navbar-light">
         
         <div class="container-fluid h5">
             <!-- Navbar  -->
@@ -200,35 +190,35 @@
             <div id="navbarCollapse" class="collapse navbar-collapse">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a href="home" class="nav-link">Admin</a>
+                        <a href="adm" class="nav-link">Admin</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link">TOUT LES PRODUITS</a>
+                    <!-- <li class="nav-item">
+                        <a href="#" class="nav-link">TOUT LES PRODUITS</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="" class="nav-link">Membre</a>
+                        <a href="#" class="nav-link">Membre</a>
                     </li>
-                   
-                                        
+                    -->                                      
                    
                 </ul>
                 <div id="membre">
-                            <div id="navbar">                             
+                    <div id="navbar">                             
                             
                             
-                            <i class="fa fa-user">_
-                                <?=$_SESSION['admin']->getLastname()?>
-                            </i>
-                            <a href="logout" class="btn btn-danger">Déconnexion</a>                                  
-                            </div>
-                        </div>
-        </div>
+                        <i class="fa fa-user">_
+                        <?=$_SESSION['admin']->getLastname()?>
+                        </i>
+                         <a href="logout" class="btn btn-danger">Déconnexion</a>                                  
+                     </div>
+                </div>
+            </div>
 
+        </div>
     </nav>
     
 
-            <?php endif; ?>
+    <?php endif; ?>
 
 
       

@@ -28,7 +28,7 @@ class ConnexionController extends MainController
          
 
         if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
-            $errors = [];
+           
            
         //    en cas sesion return l'accueil 
             return $this->show('home', [

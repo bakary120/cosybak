@@ -65,7 +65,7 @@ if (isset($_POST['moins'])) {
     header('Location:panier');
 }
 
-
+// supp des produits
 if (!empty($_GET['keyCartDelete'])) {
 
      if (count($_SESSION['panier']) > 1 ) {

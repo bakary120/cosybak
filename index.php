@@ -73,6 +73,12 @@ if ($url === '/') { // Accueil
     $ProfilController-> index();
 }elseif ($url === '/modif') {
     $ModifController->index();
+}elseif ($url === '/modifProduit') {
+    $ModifController->modifProduit();
+}elseif ($url === '/modifProduit') {
+    $ModifController->suppProduit();
+}elseif ($url === '/ajouterProduit') {
+    $ModifController->AjouterProduit();
 }elseif ($url === '/adm') {
     $AdminController->index();
 }else {

@@ -6,17 +6,25 @@ class user
     private $id;
     private $lastname;
     private $firstname;
+    private $numero;
     private $email;
     private $password;
+    private $adress;
+    private $codepostal;
+    private $ville;
     
 
-    public function __construct($id,$lastname, $firstname,  $email, $password)
+    public function __construct($id,$lastname, $firstname, $numero, $email, $password, $adress, $codepostal, $ville)
     {
         $this->id = $id;
         $this->lastname = $lastname;
         $this->firstname = $firstname;        
+        $this->numero = $numero;        
         $this->email = $email;
         $this->password = $password;
+        $this->adress = $adress;
+        $this->codepostal = $codepostal;
+        $this->ville = $ville;
     }
 
     /**
@@ -74,6 +82,24 @@ class user
     }
 
     /**
+     * Get the value of numero
+     */
+    public function getNumero()
+    {
+        return $this->numero;
+    }
+
+    /**
+     * Set the value of numero
+     */
+    public function setNumero($numero): self
+    {
+        $this->numero = $numero;
+
+        return $this;
+    }
+
+    /**
      * Get the value of email
      */
     public function getEmail()
@@ -108,4 +134,60 @@ class user
 
         return $this;
     }
+
+    /**
+     * Get the value of adress
+     */
+    public function getAdress()
+    {
+        return $this->adress;
+    }
+
+    /**
+     * Set the value of adress
+     */
+    public function setAdress($adress): self
+    {
+        $this->adress = $adress;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of codepostal
+     */
+    public function getCodepostal()
+    {
+        return $this->codepostal;
+    }
+
+    /**
+     * Set the value of codepostal
+     */
+    public function setCodepostal($codepostal): self
+    {
+        $this->codepostal = $codepostal;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of ville
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * Set the value of ville
+     */
+    public function setVille($ville): self
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
 }
+
+   

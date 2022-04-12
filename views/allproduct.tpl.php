@@ -26,9 +26,8 @@
         <div class="mr-3 mb-3">
           Affichage <strong> de </strong><strong><?= count($viewVars['allproduct']) ?> </strong>résultats
         </div>
-      
-        
       </header>
+      
       <div class="row">
         <!-- product-->
         <?php foreach($viewVars['allproduct'] as $allproduct) : ?>
@@ -42,7 +41,7 @@
 
 
 
-          <form class="product-action-buttons" action="" method="POST">
+          <form class="product-action-buttons mt-4 text-center" action="" method="POST">
            
             <input type="hidden" name="name" value="<?= $allproduct->getName() ?>">
             <input type="hidden" name="picture" value="<?= $allproduct->getPicture() ?>">
@@ -51,10 +50,8 @@
             <input type="hidden" name="id" value="<?= $allproduct->getId() ?>">
           
             <span class="font-weight-bold h4"><?= number_format($allproduct->getPrice(), 2, ',', ' ') ?> €</span>
-            <!-- <a href="./paier?product_id=<?= $allproduct->getId() ?>" class="btn btn-primary btn-buy">
-          
-            </a> -->
-            <button name="addCartSession" type="submit"><i class="fa fa-shopping-cart"></i></button>
+            
+            <button class="btn btn-success" name="addCartSession" type="submit">Ajouter au panier</button>
             <a href="./detail?product_id=<?= $allproduct->getId() ?>" class="btn btn-primary btn-buy">
               <i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
            
@@ -65,8 +62,8 @@
        
 
          
-          <div class="py-2 ">
-          <h2 class="h6 text-uppercase mb-1 text-center"><a href="#" class="text-dark"><?= $allproduct-> getName() ?></a></h2>
+          <div class="py-4 ">
+          <p class="h4 text-uppercase mb-1 text-center"><a href="#" class="text-dark"><?= $allproduct-> getName() ?></a></p>
             <p class="text-muted text-sm mb-1 "><?= $allproduct->getdescription() ?></p> 
           </div>
           
