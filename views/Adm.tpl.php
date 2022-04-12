@@ -1,5 +1,6 @@
 
 
+
 <div class="container-fluid py-4">
       <div class="row">
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
@@ -15,9 +16,9 @@
               </div>
             </div>
             <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
+            <!-- <div class="card-footer p-3">
               <p class="mb-0" _msthash="1564966" _msttexthash="803075"><span class="text-success text-sm font-weight-bolder" _istranslated="1">+55% </span>par rapport à la semaine dernière</p>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
@@ -32,9 +33,9 @@
               </div>
             </div>
             <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
+            <!-- <div class="card-footer p-3">
               <p class="mb-0" _msthash="1565317" _msttexthash="646438"><span class="text-success text-sm font-weight-bolder" _istranslated="1">+3% </span>par rapport au mois dernier</p>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
@@ -49,9 +50,9 @@
               </div>
             </div>
             <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
+            <!-- <div class="card-footer p-3">
               <p class="mb-0" _msthash="1565668" _msttexthash="1406990"><span class="text-danger text-sm font-weight-bolder" _istranslated="1">2%</span> qu’hier</p>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="col-xl-3 col-sm-6">
@@ -66,9 +67,9 @@
               </div>
             </div>
             <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
+            <!-- <div class="card-footer p-3">
               <p class="mb-0" _msthash="1566019" _msttexthash="404313"><span class="text-success text-sm font-weight-bolder" _istranslated="1">+5% par rapport </span>à hier</p>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -79,7 +80,8 @@
 
       <div class="row mb-4">
         <div class="col-lg-9 col-md-6 mb-md-0 mb-4">
-          <div class="card">
+          <div class="card" style="height: 688px; overflow: hidden;
+                overflow-y: scroll;">
                 <div class="text-center mt-2">
                 <h4>Commandes</h4> 
                 </div>
@@ -96,6 +98,7 @@
                   </thead>
                   <tbody>
                       <!-- premiere commandes foreach -->
+
                     <tr>
                       <td>
                         <div class="d-flex px-2 py-1">
@@ -163,6 +166,7 @@
                         </div>
                       </td>
                     </tr>
+           
          
                   </tbody>
                 </table>
@@ -173,43 +177,85 @@
 <!-- fin tableau suivi commandes -->
 
 
-        <div class="col-lg-3 col-md-6 text-center">
+
+
+
+ <div class="col-lg-3 col-md-6 text-center">
           <div class="card h-100">
             <div class="card-header pb-0">
               <h6 _msthash="1621087" _msttexthash="1809847">Tout les produits</h6>
-              <button name= "modifProduit" class="btn btn-success btn-sm mb-3 " type="submit">Ajouter un nouveaux produit</button> 
+
+              <a href="ajouterProduit" >
+            <button type="button" class="btn btn-success btn-sm mb-3 ">Ajouter un nouveaux produit</button> 
+          </a>
+              <!-- <button name= "modifProduit" class="btn btn-success btn-sm mb-3 " type="submit">Ajouter un nouveaux produit</button>  -->
             </div>
 
+           <div class="scroll-div " style=" 
+                height: 600px;
+                overflow: hidden;
+                overflow-y: scroll;">
+            <div class="scroll-object">
+
+         
+            <?php foreach($viewVars['allproduct'] as $allproduct) : ?>
+           
             <div class="card-body p-3">
               <div class="timeline timeline-one-side">
 
                 <div class="timeline-block mb-3">
               
-                <img src="./images/1.png" alt="..." class="cart-item-img " style="height: 70px;">
+                <img src="<?= $allproduct->getPicture() ?>" alt="..." class="cart-item-img " style="height: 70px;">
                   <h6>
                   <span class="timeline-step">
-                    <i class="material-icons text-success text-gradient" _msthash="2899949" _msttexthash="237263">the vert sencha</i>
+                    <i class="material-icons text-success text-gradient" _msthash="2899949" _msttexthash="237263"><?= $allproduct->getName() ?></i>
+                  </span>
+                  <span class="timeline-step">
+                    <i class="material-icons text-success text-gradient" _msthash="2899949" _msttexthash="237263"><?= $allproduct->getPrice() ?></i>
                   </span>
                   </h6>
                 
                   <div class="timeline-content">
-                  <button name= "modifProduit" class="btn btn-success btn-sm " type="submit">modifier</button>   
-                  <button name= "supProduit" class="btn btn-danger btn-sm px-1" type="submit">suprimer</button>                 
+                    <a href="./modifProduit?product_id=<?= $allproduct->getId() ?>">
+                    <button name= "modifProduit" class="btn btn-success btn-sm " type="submit">modifier</button> 
+                  </a>
+
+                  
+                    <a href="./adm?suppProduct_id=<?= $allproduct->getId() ?>">
+                    <button name= "suppProduit" class="btn btn-danger btn-sm px-1" type="submit">suprimer</button>  
+                  </a>
+                    
+                                 
                   </div>
                  
                 </div>
-
-               
-               
-                
-           
-              </div>
+               </div>
             </div>
+            
+            <?php endforeach; ?>
+            </div>
+
           </div>
-        </div>
+</div> 
 
 
 
-      </div>
-      
+
+        
+</div>
+</div>
+
+
+<!-- <div class="scroll-bg bg-white">
+  <div class="scroll-div " style=" width: 800px;
+  height: 300px;
+  overflow: hidden;
+  overflow-y: scroll;">
+    <div class="scroll-object" >
+            
     </div>
+  </div>
+</div> -->
+
+</div>
+

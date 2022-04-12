@@ -20,14 +20,47 @@ USE `cosybak` ;
 -- -----------------------------------------------------
 -- Table `cosybak`.`config`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `cosybak`.`config` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(255) NULL,
-  `value` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL,
-  `user_id` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`))
+-- CREATE TABLE IF NOT EXISTS `cosybak`.`config` (
+--   `id` INT NOT NULL AUTO_INCREMENT,
+--   `name` VARCHAR(255) NULL,
+--   `value` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL,
+--   `user_id` VARCHAR(45) NULL,
+--   PRIMARY KEY (`id`))
+-- ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `cosybak`.`addliv`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `cosybak`.`addLiv` (
+  `id` INT NOT NULL AUTO_INCREMENT,  
+  `lastname` VARCHAR(255) NULL,
+  `firstname` VARCHAR(255) NULL,
+  `numero` VARCHAR(255) NULL,
+  `email` VARCHAR(255) NULL,
+  `adress` VARCHAR(255) NULL,
+  `codepostal` VARCHAR(255) NULL,
+  `ville` VARCHAR(255) NULL,
+  `Total` VARCHAR(255) NULL,
+  `created_at` TIMESTAMP NULL,
+  `updated_at` VARCHAR(255) NULL,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  )
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `cosybak`.`user_admin`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `cosybak`.`user_admin` (
+  `id` INT NOT NULL AUTO_INCREMENT,  
+  `lastname` VARCHAR(255) NULL,
+  `firstname` VARCHAR(255) NULL,
+  `email` VARCHAR(255) NULL,
+  `password` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL,
+  `config_id` INT NOT NULL,
+  PRIMARY KEY (`id`),  
+ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `cosybak`.`user`
@@ -36,11 +69,16 @@ CREATE TABLE IF NOT EXISTS `cosybak`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,  
   `lastname` VARCHAR(255) NULL,
   `firstname` VARCHAR(255) NULL,
+  `numero` VARCHAR(255) NULL,
   `email` VARCHAR(255) NULL,
-  `password` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL,
-  `config_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_user_config1_idx` (`config_id` ASC))
+  `adress` VARCHAR(255) NULL,
+  `codepostal` VARCHAR(255) NULL,
+  `ville` VARCHAR(255) NULL,
+  `created_at` TIMESTAMP NULL,
+  `updated_at` VARCHAR(255) NULL,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`id`)
+  )
 ENGINE = InnoDB;
 
 
@@ -152,6 +190,7 @@ INSERT INTO `product` (`id`, `name`, `description`, `picture`, `price`,  `status
 INSERT INTO `product` (`id`, `name`, `description`, `picture`, `price`,  `status`, `created_at`, `updated_at`, `type_id`,  `category_id`) VALUES (7, 'Infusion fruits rouges - citron bio', 'Une farandole de baies rouges, roses et violettes pour célébrer le retour du soleil et des beaux jours : de la mûre et de la myrtille qui sonnent comme un retour de promenade en forêt, et de la framboise pour son parfum délicatement acidulé. Fraîches et pétillantes, les écorces de citron adjoignent l’ultime touche ensoleillée manquante.Joyeuse et vive, cette infusion biologique sans théine s’adresse aussi bien aux plus petits qu’aux plus grands gourmands.', 'images/produits/sencha.png', 14, 1, '2022-02-22 8:00:00', NULL, 1, 3);
 INSERT INTO `product` (`id`, `name`, `description`, `picture`, `price`,  `status`, `created_at`, `updated_at`, `type_id`, `category_id`) VALUES (8, 'cure détox foie 28 jours', ' la cure détox pour le foie bio de 28 jours. Autour d’un trio de thés verts, blanc et noir et de feuilles de maté, on retrouve la dent-de-lion (ou pissenlit) qui participe au fonctionnement normal du foie et de l’estomac.', 'images/produits/sencha.png', 13.99, 1, '2022-02-22 8:00:00', NULL, 3, 5);
 INSERT INTO `product` (`id`, `name`, `description`, `picture`, `price`,  `status`, `created_at`, `updated_at`, `type_id`,  `category_id`) VALUES (9, 'Tisane enfants - infusion bonbon', ' Mêlant morceaux de fraise et écorces d’orange biologiques, ce mélange naturellement sucré plongera votre enfant dans la magie d’une fête foraine, au pays des sucettes colorées et des foisonnantes barbes à papa. Un moyen ingénieux pour lui offrir une hydratation optimale tout au long de la journée, sans recourir systématiquement aux sodas et jus de fruits !', 'images/produits/sencha.png', 10, 1, '2022-02-22 8:00:00', NULL, 4, 6);
+INSERT INTO `product` (`id`, `name`, `description`, `picture`, `price`,  `status`, `created_at`, `updated_at`, `type_id`,  `category_id`) VALUES(10, 'verre a thé ', "La grande carafe est en verre borosilicaté épaissi résistant à la chaleur, qui peut résister à l\'eau bouillante.\r\nUn filtre amélioré produit un double effet et aide à minimiser la quantité de marc mieux que les autres, vous offrant une tasse de café pur comme celui des professionnels.\r\nParfait pour faire du thé frais, de l\'espresso et même de l\'infusion froide.", 'images/7.png', 12.99, 0, '2022-03-30 17:27:08', NULL, 0, 7);
 
 
 COMMIT;
